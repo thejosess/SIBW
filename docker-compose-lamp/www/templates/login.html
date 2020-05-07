@@ -1,0 +1,30 @@
+{%extends "index.html"%}
+
+{% block estilo %}<link rel="stylesheet" type="text/css" href="estilo/login.css" />{% endblock %}
+
+
+{% block titulo %} Login {%endblock%}
+
+{% block nav %}
+<div class="nav">
+    <a href="#"> </a>
+</div>
+{% endblock %}
+
+
+{% block aside %}
+{% endblock %}
+
+{% block cuerpo %}
+    <form action="login.php" method="POST" class="form">
+
+        <div class="container">
+            Nick:<input id="nick" type="text" name="nick"><br>
+            Contraseña:<input id="pass" type="text" name="pass"><br>
+
+            <input type="submit" value = "Login">
+
+        </div>
+
+    </form>
+{% endblock %}

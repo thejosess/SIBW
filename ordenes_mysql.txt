@@ -1,0 +1,74 @@
+Tabla evento:
+
+
+Un titulo que sea Analisis de rendiemiento de la camara reflex MODELO DE LA CAMARA
+
+varchar(100) modelo_camara
+id int autoincrement para ir cambiando segun la camara
+variable TEXT que sea primera parrafo
+variable TEXT que sea las conclusiones
+variable VARCHAR(100) url de la primera imagen
+variable VARCHAR(100) pie foto de la primera imagen
+variable VARCHAR(100) url de la segunda imagen
+variable VARCHAR(100) pie foto de la segunda imagen
+
+que poner por defecto??
+
+CREATE TABLE eventos(id INT AUTO_INCREMENT PRIMARY KEY, modelo VARCHAR(100), analisis TEXT, conclusiones TEXT, primeraFoto VARCHAR(100), piePrimeraFoto VARCHAR(100), segundaFoto VARCHAR(100), pieSegundaFoto VARCHAR(100));
+
+
+id, modelo, analisis, conclusiones, primeraFoto, piePrimeraFoto, segundaFoto, pieSegundaFoto
+
+INSERT INTO eventos (modelo, analisis, conclusiones, primeraFoto, piePrimeraFoto, segundaFoto, pieSegundaFoto) VALUES ('Sony A6100', 'Uno de los pocos cambios de la A6100 con su antecesora está en la capacidad táctil de su pantalla trasera. Curiosamente porque, tras haber renunciado a ella (sí la tenía la Sony NEX-6 pero no la A6000), ahora vuelve a acoger esta característica. Esto permite que ahora se pueda mover el punto de enfoque con el dedo mientras se mira por el visor electrónico. Éste, por cierto, no es el mismo de la A6600 y resulta algo peor, aunque es correcto, comparable al de cámaras de su segmento.
+                        Respecto a la pantalla, también ha variado sobre la que llevaba la A6000 y ahora es articulada y se puede colocar en posición para hacerse selfies (aunque choque un poco con el ocular del visor, que se puede quitar, eso sí). Su capacidad táctil la hace ideal para pulsar directamente con el dedo en el lugar deseado y enfocar (incluso disparar, si así lo queremos).           
+                        Lo que no se puede hacer con los dedos es, como ocurre con todas las Sony, navegar por los menús. En cualquier caso, la capacidad táctil es algo que hace que el manejo cambie respecto a la A6000, en este caso mejorando ligeramente lo que ya estaba bastante bien.
+                        Por supuesto hay que hablar del enfoque, sin duda uno de los principales motivos para comprarse esta cámara que, como hemos dicho, tiene el mismo sistema AF que su hermana mayor, la A6600, comparable con el de las A7. Así las cosas, el enfoque es muy rápido y es capaz de reconocer las caras (incluso de animales) y de seguir objetos en movimiento con mucha eficacia.
+                        Por lo demás la cámara es bastante rápida, graba en 4K y tiene una ráfaga muy decente (once fotos por segundo). También cuenta con la posibilidad de disparar totalmente en silencio, lo que no siempre está al alcance de cámaras de categorías no profesionales (como es el caso). Su autonomía oficial es de unos 400 disparos, cifra que no está mal y que es más o menos lo que hemos obtenido en nuestras pruebas.
+                        El que sin duda suele ser el apartado más crucial(la calidad de imagen) en otras cámaras aquí pasa a un segundo plano al recordar que estamos hablando de un modelo que utiliza el mismo sensor CMOS de 24,2 MPíxeles de sus hermanas de gama. Un captor APS-C que lleva muchos años en el mercado (con la lógicas actualizaciones) pero que ha demostrado de sobra sus capacidades.
+                        Esto hace, incluso, que los resultados de las tomas puedan incluso equipararse a los de la A6600, con algunas diferencias porque (por ejemplo) este modelo no lleva estabilizador. Sin embargo, en general podemos hablar de imágenes de muy buena calidad general, con excelente contraste, amplio rango dinámico, buen nivel de detalle y muy buena reproducción del color.
+                        En cuanto al rendimiento en condiciones de baja luminosidad, en las que hay que tirar de ISO, podemos decir que el límite sigue estando alrededor de 3.200 si queremos una imagen bien limpia. Sin embargo, el ruido resultante (muy equilibrado en cuanto a ruido de luminancia y crominancia, por cierto) es bastante fácil de limpiar con un software apropiado.
+                        Todo eso teniendo en cuenta que el objetivo utilizado en la prueba no parece el más indicado para sacarle el máximo rendimiento a este sensor. Para comprobarlo hicimos una pequeña prueba que podéis ver abajo realizando una misma toma con el E PZ 16-50 mm F3,5-5,6 OSS y con un Sony Zeiss Vario-Tessar T* FE 24-70 mm F4 ZA OSS (que es de formato completo) y se aprecia la diferencia a nivel del detalle que es capaz de reproducir.
+                        A nivel de conexiones, el lateral izquierdo de la A6100 oculta el compartimento con un puerto MicroUSB para cargar la batería o enviar fotos a un PC por cable. A su lado hay un MicroHDMI (tipo D), y los fanáticos del vídeo se alegrarán de descubrir un puerto de 3,5mm para micrófono externo. La A6100 es una cámara inalámbrica muy completa. Tiene wifi, bluetooth 4.1 y NFC. Lamentablemente no hace el mejor uso de estas conexiones (ver más abajo). Por cierto, tienes las especificaciones completas de la cámara en la <a href="https://www.sony.com/electronics/interchangeable-lens-cameras/ilce-6100"> web de Sony</a>.','                    La Sony A6100 no es perfecta, pero ofrece tantas cosas buenas por tan poco que se convierte en una oferta difícil de rechazar. 839 euros son un desembolso considerable en términos absolutos, pero no en fotografía y si hablamos de una cámara que te va a durar años (yo llevo más de seis años con mi A7 y no tengo ninguna prisa por cambiarla).
+                    Ahora mismo no hay cámaras sin espejo APS-C que ofrezcan lo mismo por ese precio. Las referencias más inmediatas son la Fujifilm X-A7 o la Canon EOS M6 Mark II, que son muy similares a la A6100 pero no tienen visor electrónico (algo que yo encuentro inaceptable). Eso sí, estéticamente la Fujifilm es mucho más bonita. La Olympus OM-D EM10 III, por citar otro rival, viene con estabilización en el cuerpo, pero su sensor es más pequeño (micro cuatro tercios de 16mpx) y es más grande y pesada.
+                    Puede que su sensor no sea Full Frame, pero la A6100 ha demostrado manejarse más que bien en entornos oscuros gracias a su ISO ampliado y a su procesador de imagen. Por su parte, el enfoque rapidísimo y lleno de opciones inteligentes para no perder detalle hace de la A6100 una cámara especialmente disfrutable si eres de los que gusta disparar a lo loco en modo automático. Los controles manuales son completos y mejores de lo que parecen en frío una vez superas la curva de aprendizaje. Con todo probablemente es una cámara que se quede un poco pequeña si lo que quieres es darle un uso profesional o semiprofesional.
+                    Todo eso a un precio de 800 euros. Hay cámaras de la serie A6 mucho mejores (la A6600 es gloriosa) pero carísimas. Por el precio de esa tope de gama dentro del segmento APS-C puedes comprarte una A6100 y una lente 18-135 que te dará años de felicidad fotográfica. La A6000 ha durado seis años en el mercado y sigue siendo un modelo válido. No creo que te arrepientas de comprar la A6100, a menos que vayas mucho al monte o a la playa, o quieras grabar vídeo profesional en cuyo caso probablemente necesitas un modelo más robusto y sellado contra intemperie como la A6600.', '../imagenes/2.jpg','Camara vista de frente, derechos reservados a Xatakafotos','../imagenes/2.jpg','Sony A6100 con el objetivo E PZ 16-50 mm, derechos reservados a Xatakafotos');
+
+
+
+
+
+
+INSERT INTO eventos (modelo, analisis, conclusiones, primeraFoto, piePrimeraFoto, segundaFoto, pieSegundaFoto) VALUES ('Canon EOS M200','Es una cámara para los que tienen un móvil y quieren conseguir más calidad. Con la Canon EOS M200 puede picarles el gusanillo de trabajar con una cámara con más opciones y cosas tan extrañas para ellos como un amplio abanico de diafragmas.Ganarán calidad pero perderán la comodidad del móvil. Durante la prueba le dejé la cámara a mi mujer, una convencida del mundo smartphone y me la devolvió en apenas una hora porque le resultaba grande, pesada y sin la versatilidad del teléfono.Y ese es el problema de esta cámara. Nace con la idea de sustituir a un dispositivo que es una extensión para muchos fotógrafos. Y salir de algo pequeño, plano y que permite editar y publicar directamente es muy difícil. La idea no debería ser encontrar algo similar, sino algo radicalmente distinto... una cámara más avanzada como las que podemos encontrar en el propio catálogo de la marca... Por ejemplo una Canon EOS M50. Y es una pena, porque es una cámara con un sensor fabuloso. Un cuerpo equivocado con un corazón y un cerebro perfectos. La calidad de los archivos RAW, la comodidad de la pantalla abatible para los que les gusta retratarse, la rapidez a la hora de pasar los archivos al smartphone por la aplicación Canon Camera Connect... Y en este nicho de mercado hay mucha competencia... Ahí está, aún con un sensor más pequeño la misma Canon Powershot G5x, o la Sony A5100...','La Canon EOS M200 es una cámara de entrada. Destaca más por su interior (Dual Pixel CMOS AF para el vídeo, enfoque al ojo...) que por las características exteriores. Y le falta un buen objetivo de entrada para ser realmente atractiva. Las cámaras sin espejo no tienen que parecer móviles... tienen que destacar por sus posibilidades infinitas de uso.a Canon EOS M200 nos ofrece muchísimos modos predefinidos para que podamos elegir el que más se acople al tipo de fotografía que vamos a realizar. Tenemos un modo Autorretrato (el elegido para realizar la foto que tenéis sobre estas líneas), un modo Paisaje, un modo Retrato, un interesante modo Primer Plano, modo Comida, modo Retrato Nocturno, modo Contraluz, modo Blanco y negro e incluso varios modos creativos (Acuarela, Cámara de juguete, Miniatura y muchos más).
+Puede que su sensor no sea Full Frame, pero la A6100 ha demostrado manejarse más que bien en entornos oscuros gracias a su ISO ampliado y a su procesador de imagen. Por su parte, el enfoque rapidísimo y lleno de opciones inteligentes para no perder detalle hace de la A6100 una cámara especialmente disfrutable si eres de los que gusta disparar a lo loco en modo automático. Los controles manuales son completos y mejores de lo que parecen en frío una vez superas la curva de aprendizaje. Con todo probablemente es una cámara que se quede un poco pequeña si lo que quieres es darle un uso profesional o semiprofesional.
+
+Son modos que seguro gustan a los que vengan de un móvil. Algunos son bastante curiosos y hacen que podamos darle un toque artístico a nuestras fotografías. Por supuesto también tenemos un modo totalmente manual, aunque al tener la cámara tan pocos controles físicos es un poco engorroso trabajar con él.
+
+Para que veáis algunas de las imágenes que se pueden conseguir con los modos predefinidos, os dejo por aquí una pequeña galería con algunas muestras. Son todos JPEG directos de cámara.', '../imagenes/3.jpg',' Vista de la cámara ','../imagenes/4.jpg','Canon Eos M200 Iso 100 1/800 f7,1 , derechos reservados a Xatakafotos');
+
+
+INSERT INTO eventos (modelo, analisis, conclusiones, primeraFoto, piePrimeraFoto, segundaFoto, pieSegundaFoto) VALUES ('Leica Q2','Dentro de su diseño sobrio nos encontramos con la batería que no posee una pestaña que la proteja, sino que al accionar la palanca se libera la misma que lleva incorporado el cierre sellado. No hemos notado ninguna dificultad con esto, pero habría que ver si con el uso frecuente de extraer e introducir la batería, esta "junta" pierde capacidad de sellado.
+
+La batería rinde por encima de sus especificaciones de 350 disparos, pero sí echamos en falta alguna opción de carga a través de USB en el propio cuerpo, ya que nos obliga a usar siempre el cargador externo que se suministra.
+
+Echamos en falta alguna opción de carga a través de USB en el propio cuerpo
+
+El visor electrónico es de tecnología OLED con 3.68 megapíxeles y la pantalla trasera LCD de tres pulgadas y capacidad táctil. Todo para ofrecer una buena experiencia, aunque sí hemos notado en algunas escenas que el visor no rendía tan luminoso y detallado como se esperaba. Como si mostrar "señal de ruido" que no se correspondía con el que captara la imagen.
+','La Leica Q2 es una cámara de casi cinco mil euros y eso ya es un factor condicionante para muchos usuarios. Pero cabe destacar que este puede ser su principal hándicap, porque en cuanto a rendimiento, calidad de imagen y construcción, resulta una compacta de primer nivel. Es el precio a pagar por una cámara que ofrece la experiencia de Leica en todos sus sentidos, sin tener que acudir a las míticas Leica M.
+No podemos olvidar que estamos hablando de un sensor full frame de 47 megapíxeles, un objetivo Leica Summilux 28 mm f/1.7 ASPH y, todo ello, en un cuerpo compacto, sólido y resistente, con una batería correcta y un diseño único, algo que no lo podemos encontrar aún. Tendríamos que acudir a la RX1R II de Sony o la propia Leica Q para comparar, por lo que estamos ante una cámara realmente exclusiva.
+
+Minimalista, elegante y muy idónea para fotografía de calle, reportaje o viajes
+
+La nitidez de las capturas con la sencillez del diseño hacen que la experiencia que ofrece la Q2 sea sobresaliente. Minimalista, elegante y muy idónea para fotografía de calle, reportaje o viajes. Se puede llevar a todas partes, resiste y además, cuenta con opciones de vídeo 4K por si alguna vez queremos aprovecharlo, aunque no es algo que consideremos tan relevante en una cámara como esta.
+
+Son modos que seguro gustan a los que vengan de un móvil. Algunos son bastante curiosos y hacen que podamos darle un toque artístico a nuestras fotografías. Por supuesto también tenemos un modo totalmente manual, aunque al tener la cámara tan pocos controles físicos es un poco engorroso trabajar con él.
+
+En resumen, realmente creo que Leica ha cimentado la posición de la Q como la opción principal para los fotógrafos que desean una cámara fotográfica multifunción de fotograma completo que pueda realizar una doble función como una función de apuntar y disparar extremadamente fácil de usar. Dispositivo de viaje / familiar, y también como cámara para uso profesional con controles manuales completos. ¡Que conserva y mejora el diseño sobrio y ergonómico original, la elegancia es solo la guinda del pastel!
+
+El Q2 ​​ahora acompañará al M10-P en mi bolsa regular (ayer vendí mi respaldo M10-P). De hecho, para eventos sociales y vacaciones familiares, ¡puede que sea la única cámara que necesito llevar!
+
+','../imagenes/6.jpg',' Vista de la cámara desde arriba ','../imagenes/7.jpg','Leica Q2 @ f/8; 1/250 s; ISO 800 , derechos reservados a Xatakafotos');
+
+
+
+
+

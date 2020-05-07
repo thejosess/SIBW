@@ -1,0 +1,44 @@
+{%extends "index.html"%}
+
+{% block estilo %}<link rel="stylesheet" type="text/css" href="estilo/login.css" />{% endblock %}
+
+
+{% block titulo %} Registro {%endblock%}
+
+{% block nav %}
+<div class="nav">
+    <a href="#"> </a>
+</div>
+{% endblock %}
+
+
+{% block aside %}
+{% endblock %}
+
+{% block cuerpo %}
+    <form action="registro.php" method="POST" class="form" enctype="multipart/form-data">
+
+        <div class="container">
+            Nick:<input id="nick" type="text" name="nick"><br>
+            Contraseña:<input id="pass" type="text" name="pass"><br>
+            Apellido:<input id="apellido" type="text" name="apellido"><br>
+            Email:<input id="email" type="text" name="email"><br>
+
+
+            {% for e in errores %}
+                <p style="color: #f00;">{{e}}</p>
+            {% endfor %}
+          
+            {% if imagen %}
+                <p>La imagen está guardada en <a href="{{imagen}}">{{imagen}}</a>.</p> 
+                <img src="{{imagen}}" />
+            {% else %}
+              Avatar: <input type="file" id="avatar" name="imagen" /><br>
+            {% endif %}
+
+            <input type="submit" value = "Registrarse">
+
+        </div>
+
+    </form>
+{% endblock %}

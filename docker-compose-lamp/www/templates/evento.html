@@ -1,0 +1,155 @@
+{% extends "index.html" %}
+
+{% block estilo %}<link rel="stylesheet" type="text/css" href="/estilo/estilo_evento.css" />{% endblock %}
+
+{% block javascript %}<script type="text/javascript" src="/Javascript/JavaScript.js"></script>{% endblock %}
+
+
+                {% block foro %} <a href="#">Foro</a> {% endblock %}
+                
+                    {% block interes %}
+                    <p>
+                        "Las mejores camaras mirroless de 2020, para pricipiantes, profesionales y entusiastas"
+                    </p>
+                    <span class="enlaces"><a href="https://www.digitalcameraworld.com/buying-guides/the-best-mirrorless-camera"> Digital camera world </a></span>
+                    <br>
+                    <br>
+                    <br>
+                    <p>
+                        "Las mejores camaras DSLR de 2020, para pricipiantes, profesionales y entusiastas"
+                    </p>
+                    <span class="enlaces"><a href="https://www.digitalcameraworld.com/buying-guides/best-dslr-camera"> Digital camera world </a></span>
+                    <!-- <p>Utilizando las variables de twig y acceso BD -> {{evento['nombre']}}</p>
+                    <p>{{ evento['lugar']}}</p> -->
+                    {% endblock %}
+    {% block cuerpo %}
+        <section>
+            <h1>
+                Analisis de rendimiento de la camara reflex {{ evento['modelo']}}
+            </h1>
+            <p>
+                <h2> Xatakafotos</h2>
+            </p>
+            <p>
+                <h3>28/02/2020 ~ 12:00</h3>
+            </p>
+
+            {% block boton %}
+            <div class="comenta">
+                <button id="boton" onclick="Comenta(this)">
+                    Comenta
+                </button>
+                <button id="boton2" onclick="Cerrar()">
+                    Cerrar
+                </button>
+            </div>
+            {%endblock %}
+
+            <div>
+                <div class="contenedorImagen">
+                    <img src= {{ evento['primeraFoto'] }} class="img" >
+                    <span class="pie">{{ evento['piePrimeraFoto']}}<div class="caption"><a href="https://i.blogs.es/dd0ebd/sony-a6100-review-008/1366_2000.jpg">foto 1</a></div></span>
+                </div>
+                    
+                {{ evento['analisis']}}
+            </div>
+
+            <br><br><br><br>
+            <div class="conclusiones">
+                <p>
+                    <h4>Conlusiones</h4>
+                </p>
+                <div>
+                    <div class="contenedorImagen">
+                        <img src={{ evento['segundaFoto'] }} class="img" >
+                        <span class="pie"> {{ evento['pieSegundaFoto']}}<div class="caption"><a href="https://i.blogs.es/cf6003/dsc00459/1366_2000.jpg">foto 2</a></div> </span>
+                    </div>                    
+                </div>
+                {{ evento['conclusiones']}}
+                <p>
+                    Mas información:
+                    <br>
+                    <a href="https://www.xatakafoto.com/analisis-y-pruebas/sony-a6100-analisis-renovacion-todo-clasico-que-aspira-a-ser-mejor-camara-para-familias-todo-tipo-publicos">xataka</a>
+                    <a href="https://es.gizmodo.com/la-sony-a6100-lo-tiene-todo-para-hacerte-un-fotografo-f-1841744190">gizmodo</a>
+                
+                {% block comentarios %}
+                    <a href="https://twitter.com/intent/tweet?info1=value&info2=value">
+                        <img src="../imagenes/twitter.png" class="twitter">
+                    </a>
+
+                    <a target="_blank" href="http://www.facebook.com/sharer.php?u=http://www.google.com">
+                        <!-- puedes poner en vez de google la url de la pagina -->                            
+                        <img src="../imagenes/facebook.png" class="facebook">
+                    </a>
+
+                    <a href="/imprimir.php">
+                        <img src="../imagenes/print.png" class="facebook">
+                    </a>
+                </p>
+            </div>
+        </section>
+
+        <div id ="comentarios">
+            <h3>Comentarios</h3>
+
+
+            <div class = "newComentario">
+
+                <form class="formulario" method="POST" action="/funciones.php">
+                    <input type="text" name="id" value = "{{ evento['id_evento'] }}" class="hidden"><br>
+                
+                    Nombre:<input id="nombre" type="text" name="nombre"><br>
+                    Email:<input id="mail" type="email" name="mail"><br><br>
+
+                    Comentario:
+                    <textarea id="texto" type="textarea" name="texto" oninput="banear()"></textarea>
+                    <input type="submit" id="envia" value = "Enviar comentario" onclick="Envia()">
+                    <!-- <button id="envia" onclick="Envia()">Envia comentarios</button> -->
+
+                </form>
+            </div>
+
+
+            <div id = "hueco"><br>
+                {% for comentario in evento['comentarios'] %}
+                <div id = "comment1"> 
+                    <p>
+                        <strong><u>  {{ comentario[0] }}  </u></strong>
+                    </p>
+                    <p>  
+                        {{ comentario[1] }} 
+                    </p> 
+                    <p>
+                        {{ comentario[2] }}  a las {{ comentario[3] }} 
+                    </p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div id="palabras">
+            <div id="palabra1">{{ palabras[0] }}</div><div id="palabra2">{{ palabras[1] }}</div>
+            <div id="palabra3">{{ palabras[2] }}</div><div id="palabra4">{{ palabras[3] }}</div>
+            <div id="palabra5">{{ palabras[4] }}</div><div id="palabra6">{{ palabras[5] }}</div>
+            <div id="palabra7">{{ palabras[6] }}</div><div id="palabra8">{{ palabras[7] }}</div>
+            <div id="palabra9">{{ palabras[8] }}</div><div id="palabra10">{{ palabras[9] }}</div>
+
+            
+        </div>
+
+
+        <!-- {% if not user %}
+            //aqui las cosas de no estar logeado
+        {% else %}
+            //cosas de si estar registrado
+            {{ user.nick }}
+
+            {% if user.tipo == "super" %}
+                //cosas de superusuario
+            {% endif %}
+        {% endif %} -->
+
+        <!-- //<p><a href="logout.php">Salir</a></p>
+        //para poder hacer logout -->
+        {% endblock %}
+    {% endblock %}
+        

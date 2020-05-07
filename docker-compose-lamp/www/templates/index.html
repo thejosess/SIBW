@@ -1,0 +1,173 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block estilo %}<link rel="stylesheet" type="text/css" href="estilo/index.css" />{% endblock %}
+    <link rel="shortcut icon" type="image/x-icon" href="/imagenes/instagram-logo.svg">
+    <title>Practica 1</title>
+    {% block javascript %} {% endblock %}
+</head>
+
+<body>
+    <header>
+            <img src="/imagenes/instagram-logo.svg" id="logo">
+            <div class="titulo">
+                <h1>{% block titulo %} World Photography {% endblock %}</h1>
+                <!-- Creo la clase titulo para personalinzar asi el titulo sin modifiar
+                    el resto de elementos del header -->
+            </div>
+            {% block nav %}
+            <div class="nav">
+                <a href="index.php">Home</a>
+                {% block foro %} <a href="evento.php">Foro</a> {% endblock %}
+                <a href="#">Contacto</a>
+
+                {% if logueado == false %}
+                    <div class="usuario">
+                        <a href="registro.php">Registrarse</a>
+                        <a href="login.php">Login</a>
+                    </div>
+                {% endif %}
+
+                {% if logueado == true %}
+                    <div class="usuario">
+                        <a href="#">Perfil</a>
+                        <a href="logout.php">Cerrar sesion</a>
+                    </div>
+                {% endif %}
+
+
+            </div>
+            {% endblock %}
+    </header>
+
+    <div class="centro">
+        {% block aside %}
+        <aside>
+            <p><h3>Enlaces de interés</h3></p>
+            <br>
+            <p>
+                <div class="slide"><h4>Premios de fotografía</h4>
+                    {% block interes %}
+                    <p>
+                        "La Fundación World Press Photo acaba de desvelar los finalistas del prestigioso concurso de fotoperiodismo en 2019. Esta 62ª edición cuenta con 43 nominados en total, donde destacamos a la hispanofrancesa Catalina Martin-Chico que opta al máximo galardón."
+                    </p>
+                    <span class="enlaces"><a href="https://www.xatakafoto.com/concursos/estos-finalistas-a-premios-world-press-photo-2019"> Xataka </a></span>
+                    <br>
+                    <br>
+                    <br>
+                    <p>
+                        "La imagen ganadora es obra del francés Greg Lecoeur, nombrado gracias a ella como “Fotógrafo subacuático del año”, y fue realizada durante un viaje para documentar la vida silvestre en los icebergs a la deriva de las corrientes polares"
+                    </p>
+                    <span class="enlaces"><a href="https://www.xatakafoto.com/concursos/estas-imagenes-vencedoras-concurso-fotografia-submarina-underwater-photographer-of-the-year-2020"> Xataka </a></span>
+                    {% endblock %}
+                </div>
+            </p>
+            <br> <br>
+            <p>
+                <div class="tienda"><h4>Tiendas de fotografía</h4>
+                    <p>La mejor opción para comprar cámaras actualmente es amazon</p>
+                    <span class="enlaces"><a href=https://www.amazon.es/b/?node=664660031&ref=gwrd_topcats_en&pf_rd_p=5262d553-fbcd-4481-864d-c28765bfd075&pf_rd_r=0PNSMJ4QFTKQ8XDJEN9A> amazon </a></span>
+                </div>
+            </p>
+        </aside>
+        {% endblock %}
+    
+        <section>
+            {% block cuerpo %}
+            <table id="tabla_contenidos">
+            <caption><span class="titulo_tabla"><h2></h2>Top 9 Cámaras</span></caption>
+                <tr>
+                    <td>
+                        <div class="elemento">
+                        <a href="evento.php"><img src="imagenes/1.svg" class="img-responsive" alt="enlace 1" /></a>
+                        <p>
+                            <a href="evento.php">Puesto 1</a>
+                        </p>
+                        </div>
+                    </td>
+                    
+                    <td>
+                        <div class="elemento">
+                            <a href="evento.php"><img src="imagenes/2.svg" class="img-responsive" alt="enlace 2" /></a>
+                            <p>
+                                <a href="evento.php">Puesto 2</a>
+                            </p>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="elemento">
+                            <a href="evento.php"><img src="imagenes/3.svg" class="img-responsive" alt="enlace 3" /></a>
+                            <p>
+                                <a href="evento.php">Puesto 3</a>
+                            </p>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="elemento">
+                            <a href="evento.php"><img src="imagenes/4.svg" class="img-responsive" alt="enlace 4" /></a>
+                            <p>
+                                <a href="evento.php">Puesto 4</a>
+                            </p>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="elemento">
+                            <a href="evento.php"><img src="imagenes/5.svg" class="img-responsive" alt="enlace 5" /></a>
+                            <p>
+                                <a href="evento.php">Puesto 5</a>
+                            </p>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="elemento">
+                            <a href="evento.php"><img src="imagenes/6.svg" class="img-responsive" alt="enlace 6" /></a>
+                            <p>
+                                <a href="evento.php">Puesto 6</a>
+                            </p>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="elemento">
+                            <a href="evento.php"><img src="imagenes/7.svg" class="img-responsive" alt="enlace 7" /></a>
+                            <p>
+                                <a href="evento.php">Puesto 7</a>
+                            </p>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="elemento">
+                            <a href="evento.php"><img src="imagenes/8.svg" class="img-responsive" alt="enlace 8" /></a>
+                            <p>
+                                <a href="evento.php">Puesto 8</a>
+                            </p>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="elemento">
+                            <a href="evento.php"><img src="imagenes/9.svg" class="img-responsive" alt="enlace 9" /></a>
+                            <p>
+                                <a href="evento.php">Puesto 9</a>
+                            </p>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            {% endblock %}
+        </section>
+    </div>
+
+    <footer>
+        <p>
+            Copyright © - José Santos Salvador
+        </p>
+    </footer>
+
+</body>
+</html>

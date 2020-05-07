@@ -1,0 +1,52 @@
+ 
+# Para conectar a nuestra base de datos (como root):
+mysql -h 127.0.0.1 -P 3306 -u root -p
+
+# Para crear una base de datos llamada SIBW
+create database SIBW;
+
+# Para dar permisos a esa base de datos a un usuario (y no entrar como root, que es peligroso)
+
+CREATE USER 'jose'@'%' IDENTIFIED BY '1234';
+GRANT create, delete, drop, index, insert,alter, references, select, update ON SIBW.* TO 'jose'@'%';
+
+# Para salir del cliente MySQL
+exit
+
+
+# Para entrar como el usuario que acabamos de crear
+mysql -h 127.0.0.1 -P 3306 -u jose -p
+
+# Para que el usuario use la BD SIBW
+use SIBW
+
+# Creamos una tabla para los eventos
+CREATE TABLE eventos(
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  nombre VARCHAR(100),
+  lugar VARCHAR(100)
+)
+
+# Insertamos los datos de algunos eventos
+INSERT INTO eventos (nombre, lugar) VALUES ('Convención médica anti-coronavirus', 'Granada');
+INSERT INTO eventos (nombre, lugar) VALUES ('Aplauso a los sanitarios', 'Tu balcón');
+
+# Comprobar los datos introducidos:
+SELECT * FROM eventos;
+
+
+CREATE TABLE comentarios1 (
+    id_comentario int NOT NULL AUTO_INCREMENT,
+    nombre varchar(100) NOT NULL,
+    comentario text NOT NULL,
+    fecha date NOT NULL,
+    hora time NOT NULL,
+    id_evento int NOT NULL,
+    PRIMARY KEY (id_comentario),
+    FOREIGN KEY (id_evento) REFERENCES eventos(id),
+    FOREIGN KEY (nombre) REFERENCES usuarios(nick)
+); 
+
+
+
+
