@@ -36,7 +36,11 @@
   else if(startsWith($uri, "/registro"))
   {
     include("scripts/registro.php");
-  }     
+  }
+  else if(startsWith($uri, "/perfil"))
+  {
+    include("scripts/perfil.php");
+  }      
   else
   {
     if($_SESSION['logueado'] == true){

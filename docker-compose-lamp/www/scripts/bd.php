@@ -230,27 +230,27 @@
 
   }
 
-  function getUsuario($nick){
+  function getUsuario($email){
     getConexion();
     global $mysqli;
 
     try{
-      $user = mysqli_real_escape_string($mysqli, $nick);
-      $usuario = $mysqli->query("SELECT * FROM usuarios WHERE nick='$user'");
-  
+      $user = mysqli_real_escape_string($mysqli, $email);
+      $usuario = $mysqli->query("SELECT * FROM usuarios WHERE email='$user'");
+
       if($usuario->num_rows > 0){
-  
         $row = $usuario->fetch_assoc();
+        $datosUsuario = ['nick' => $row['nick'], 'apellido' => $row['apellido1'], 'email' => $row['email'], 'pass' => $row['pass'], 'avatar' => $row['avatar']];
       }
       else{
-        $usuario = null;
+        $datosUsuario = null;
       }
 
     }catch (Exception $e){
       echo "Excepcion al hacer login: " .$e->getMessage()."\n";
     }
 
-    return $usuario;
+    return $datosUsuario;
 
   }
   //tengo que devolver un array porque mirar telegram

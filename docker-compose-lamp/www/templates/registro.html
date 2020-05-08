@@ -27,16 +27,8 @@
             Email:<input id="email" type="text" name="email"><br>
 
 
-            {% for e in errores %}
-                <p style="color: #f00;">{{e}}</p>
-            {% endfor %}
           
-            {% if imagen %}
-                <p>La imagen está guardada en <a href="{{imagen}}">{{imagen}}</a>.</p> 
-                <img src="{{imagen}}" />
-            {% else %}
-              Avatar: <input type="file" id="avatar" name="imagen" /><br>
-            {% endif %}
+            Avatar: <input type="file" id="avatar" name="imagen" /><br>
 
             <input type="submit" value = "Registrarse">
 

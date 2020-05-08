@@ -8,14 +8,14 @@ $carga = new \Twig\Loader\ArrayLoader([
 $mensaje = new \Twig\Environment($carga);
 
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
-    $nick = $_POST['nick'];
+    $email = $_POST['email'];
     $pass = $_POST['pass'];
 
     if(checkLogin($email,$pass) != null){
         //tener en cuenta que devuelve un user
         session_start();
 
-        $_SESSION['email'] = $nick;
+        $_SESSION['email'] = $email;
         $_SESSION['logueado'] = true;
         header("refresh:2;url=index.php");
 
