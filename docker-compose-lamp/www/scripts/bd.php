@@ -170,19 +170,18 @@
     getConexion();
     global $mysqli;
 
-    $user = mysqli_real_escape_string($mysqli, $datos['nick']);
+    $email = mysqli_real_escape_string($mysqli,$datos['email']);
 
-    $res =  $mysqli->query("SELECT * FROM usuarios WHERE nick='$user'");
+    $res =  $mysqli->query("SELECT * FROM usuarios WHERE email='$email'");
     if($res->num_rows > 0)
       return false;
 
     $nick = mysqli_real_escape_string($mysqli, $datos['nick']);
-    $contraseña = mysqli_real_escape_string($mysqli, $datos['pass']);
+    $cntraseña = mysqli_real_escape_string($mysqli, $datos['pass']);
     $contraseña = password_hash($contraseña, PASSWORD_DEFAULT);
     $tipo = "registrado";
     $path = mysqli_real_escape_string($mysqli,$datos['ruta']);
     $apellido = mysqli_real_escape_string($mysqli,$datos['apellido']);
-    $email = mysqli_real_escape_string($mysqli,$datos['email']);
 
 
     $res = "INSERT INTO usuarios(nick,pass,avatar,email,apellido1,tipo) VALUES ('$nick','$contraseña','$path','$email','$apellido','$tipo')"
@@ -198,14 +197,14 @@
   }
 
 
-  function checkLogin($nick, $pass){
+  function checkLogin($email, $pass){
     getConexion();
     global $mysqli;
 
     try{
-      $user = mysqli_real_escape_string($mysqli, $nick);
+      $email = mysqli_real_escape_string($mysqli, $email);
       $contraseña = mysqli_real_escape_string($mysqli, $pass);
-      $usuario = $mysqli->query("SELECT * FROM usuarios WHERE nick='$user'");
+      $usuario = $mysqli->query("SELECT * FROM usuarios WHERE email='$email'");
   
       if($usuario->num_rows > 0){
   
@@ -222,7 +221,7 @@
 
 
 
-    // $res = $mysqli->query("SELECT nick FROM usuarios WHERE nick=`$nick` and pass=`$pass`");
+    // $res = $mysqli->query("SELECT email FROM usuarios WHERE nick=`$nick` and pass=`$pass`");
     // if($res->num_rows > 0){
     //   return true;
     // }

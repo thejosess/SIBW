@@ -108,6 +108,15 @@ function comprobarEmail( mail )
     return regex.test(mail) ? true : false;
 }
 
+/* function validarEmail(){
+    var mail = document.getElementById("email")
+    if(comprobarEmail(mail))
+        alert("El email es correcto");
+    else
+        alert("El email es incorrecto");
+
+} */
+
 function comprobarVacio(nombre, mail,texto){
     if(nombre.value == null || nombre.value == ""){
         alert("Tienes que rellenar campo nombre")
