@@ -1,6 +1,8 @@
 <?php
 
 require_once 'bd.php';
+require_once 'comprobarEmail.php';
+
 
 $varsParaTwig = []; 
 
@@ -11,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
     $apellido = $_POST['apellido'];
     $email =  $_POST['email'];
 
-    if(!preg_match('/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/', $email)){
+    if(!comprobarEmail($email)){
       /* echo $twig->render('registro.html',[]); */
       header("url=registro.php");
 

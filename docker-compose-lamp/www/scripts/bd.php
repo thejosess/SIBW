@@ -99,30 +99,48 @@
     return $evento;
   }
 
-  // function getComentarios($idEvento){
-  //   getConexion();
-  //   global $mysqli;
-  //   $idEvento = (int)$idEvento;
 
-  //   $res = $mysqli->query("SELECT * FROM comentarios WHERE id_evento=" .$idEvento);
+  function cambiarNick($email,$nick){
+    getConexion();
+    global $mysqli;
 
-  //   if ($res->num_rows == 0) {
-  //     $res = $mysqli->query("SELECT * FROM comentarios WHERE id_evento=1");
-  //   }
-  //   /* por si pone un id_evento que no tiene comentarios */
+    $nick = mysqli_real_escape_string($mysqli, $nick);
 
+    $res =  $mysqli->query("UPDATE usuarios SET nick='$nick' WHERE email='" . $email . "'");
+  }
 
+  function cambiarApellido($email,$apellido){
+    getConexion();
+    global $mysqli;
 
+    $apellido = mysqli_real_escape_string($mysqli, $apellido);
 
-  //   /* if ($idEvento == -1)
-  //   {
-  //     $res = $mysqli->query("SELECT * FROM comentarios WHERE id_evento=1");
-  //   } */
-  //   #por defecto
-  //   /* no hace falta ya que te envie el 1 */
+    $res =  $mysqli->query("UPDATE usuarios SET apellido1='$apellido' WHERE email='" . $email . "'");
+  }
 
-  //   return $res;
-  // }
+  function cambiarEmail($email,$nuevoEmail){
+    getConexion();
+    global $mysqli;
+
+    $nuevoEmail = mysqli_real_escape_string($mysqli, $nuevoEmail);
+
+    $res =  $mysqli->query("UPDATE usuarios SET email='$nuevoEmail' WHERE email='" . $email . "'");
+  }
+
+  function cambiarContraseña($email,$pass,$pass2){
+    getConexion();
+    global $mysqli;
+
+    $nuevaPass = password_hash($pass2,PASSWORD_DEFAULT);
+    if(checkLogin($email,$pass))
+    {
+      $res = $mysqli->query("UPDATE usuarios SET pass='$nuevaPass' WHERE email='" . $email . "'");
+      return true;
+    }
+    else
+      return false;
+  }
+
 
   function getPalabrasBaneadas(){
     getConexion();
@@ -177,7 +195,7 @@
       return false;
 
     $nick = mysqli_real_escape_string($mysqli, $datos['nick']);
-    $cntraseña = mysqli_real_escape_string($mysqli, $datos['pass']);
+    $contraseña = mysqli_real_escape_string($mysqli, $datos['pass']);
     $contraseña = password_hash($contraseña, PASSWORD_DEFAULT);
     $tipo = "registrado";
     $path = mysqli_real_escape_string($mysqli,$datos['ruta']);
