@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: mysql:3306
--- Tiempo de generación: 09-05-2020 a las 17:38:22
+-- Tiempo de generación: 09-05-2020 a las 18:06:12
 -- Versión del servidor: 8.0.20
 -- Versión de PHP: 7.4.5
 
@@ -43,6 +43,35 @@ CREATE TABLE `comentarios` (
 INSERT INTO `comentarios` (`id_comentario`, `nombre`, `comentario`, `fecha`, `hora`, `id_evento`) VALUES
 (1, 'Juan', ' Es una muy buena pagina ', '2020-10-03', '12:34:40', 1),
 (2, 'Lucia', ' Me encanta vuestro analisis de la A6100 ', '2020-10-01', '20:45:05', 1),
+(8, 'Pepe', '¿Viene con kit de fabrica?', '2020-05-09', '05:48:33', 2),
+(9, 'Pepe', 'Creo que me la voy a comprar', '2020-05-09', '05:49:59', 3),
+(10, 'Pepe', 'Creo que sois un poco fanboys', '2020-05-09', '05:54:52', 9),
+(11, 'Pepe', 'Algun dia sere fotografo como vosotros', '2020-05-09', '05:55:45', 6),
+(12, 'Pepe', 'santossalvador99@gmail.com', '2020-05-09', '06:01:16', 4),
+(14, 'Pepe', 'Que fraude de camara chaval', '2020-05-09', '06:05:10', 7);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `comentarios2`
+--
+
+CREATE TABLE `comentarios2` (
+  `id_comentario` int NOT NULL,
+  `nombre` varchar(100) NOT NULL,
+  `comentario` text NOT NULL,
+  `fecha` date NOT NULL,
+  `hora` time NOT NULL,
+  `id_evento` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Volcado de datos para la tabla `comentarios2`
+--
+
+INSERT INTO `comentarios2` (`id_comentario`, `nombre`, `comentario`, `fecha`, `hora`, `id_evento`) VALUES
+(1, 'Juan', ' Es una muy buena pagina ', '2020-10-03', '12:34:40', 1),
+(2, 'Lucia', ' Me encanta vuestro analisis de la A6100 ', '2020-10-01', '20:45:05', 1),
 (3, 'Maria', 'Me estoy pensando en comprar esa camara, genial.', '2020-05-01', '10:45:25', 2),
 (4, 'Julian', 'No estoy muy convencido de si sale rentable comprarsela, no tiene una gran distancia focal...', '2020-12-04', '17:44:05', 2),
 (5, 'David', 'No me gusta nada como la habeis analizado, no habeis estado a la altura', '2020-09-01', '22:45:25', 3),
@@ -64,29 +93,6 @@ INSERT INTO `comentarios` (`id_comentario`, `nombre`, `comentario`, `fecha`, `ho
 (55, 'Juan', 'deberia de ir guay                        \r\n                    ', '2020-05-05', '06:49:09', 5),
 (56, 'Prueba', 'probando, dos, tres                        \r\n                    ', '2020-05-06', '06:14:44', 1),
 (57, 'Prueba', 'asdfasdf\r\n                    ', '2020-05-06', '06:15:01', 5);
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `comentarios1`
---
-
-CREATE TABLE `comentarios1` (
-  `id_comentario` int NOT NULL,
-  `nombre` varchar(100) NOT NULL,
-  `comentario` text NOT NULL,
-  `fecha` date NOT NULL,
-  `hora` time NOT NULL,
-  `id_evento` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Volcado de datos para la tabla `comentarios1`
---
-
-INSERT INTO `comentarios1` (`id_comentario`, `nombre`, `comentario`, `fecha`, `hora`, `id_evento`) VALUES
-(6, 'Juan', ' Es una muy buena pagina ', '2020-10-03', '12:34:40', 1),
-(7, 'Lucia', ' Me encanta vuestro analisis de la A6100 ', '2020-10-01', '20:45:05', 1);
 
 -- --------------------------------------------------------
 
@@ -200,8 +206,8 @@ CREATE TABLE `usuarios` (
 
 INSERT INTO `usuarios` (`nick`, `apellido1`, `email`, `tipo`, `pass`, `avatar`) VALUES
 ('Jose', 'Santos', 'josess09@hotmail.es', 0, '$2y$10$l5qTB6sG10PfLTK2LSEBGu9T5w7h7UdXK7r2/06acuVt6DQ/ZsG46', 'imagenes/avatares/1.jpg'),
-('Juan', 'Garcia', 'garci@gmail.com', 0, '1234', ''),
-('Lucia', 'Lopez', 'luci3@gmail.com', 0, '1234', ''),
+('Juan', 'Garcia', 'garci@gmail.com', 0, '$2y$10$l5qTB6sG10PfLTK2LSEBGu9T5w7h7UdXK7r2/06acuVt6DQ/ZsG46', ''),
+('Lucia', 'Lopez', 'luci3@gmail.com', 0, '12$2y$10$l5qTB6sG10PfLTK2LSEBGu9T5w7h7UdXK7r2/06acuVt6DQ/ZsG4634', ''),
 ('Pepe', 'Salvador', 'santossalvador99@gmail.com', 1, '$2y$10$l5qTB6sG10PfLTK2LSEBGu9T5w7h7UdXK7r2/06acuVt6DQ/ZsG46', 'imagenes/avatares/1.jpg');
 
 --
@@ -213,15 +219,15 @@ INSERT INTO `usuarios` (`nick`, `apellido1`, `email`, `tipo`, `pass`, `avatar`) 
 --
 ALTER TABLE `comentarios`
   ADD PRIMARY KEY (`id_comentario`),
-  ADD KEY `id_evento` (`id_evento`);
-
---
--- Indices de la tabla `comentarios1`
---
-ALTER TABLE `comentarios1`
-  ADD PRIMARY KEY (`id_comentario`),
   ADD KEY `id_evento` (`id_evento`),
   ADD KEY `nombre` (`nombre`);
+
+--
+-- Indices de la tabla `comentarios2`
+--
+ALTER TABLE `comentarios2`
+  ADD PRIMARY KEY (`id_comentario`),
+  ADD KEY `id_evento` (`id_evento`);
 
 --
 -- Indices de la tabla `eventos`
@@ -256,13 +262,13 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `comentarios`
 --
 ALTER TABLE `comentarios`
-  MODIFY `id_comentario` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
+  MODIFY `id_comentario` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
--- AUTO_INCREMENT de la tabla `comentarios1`
+-- AUTO_INCREMENT de la tabla `comentarios2`
 --
-ALTER TABLE `comentarios1`
-  MODIFY `id_comentario` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+ALTER TABLE `comentarios2`
+  MODIFY `id_comentario` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
 
 --
 -- AUTO_INCREMENT de la tabla `eventos`
@@ -284,14 +290,14 @@ ALTER TABLE `imagenes`
 -- Filtros para la tabla `comentarios`
 --
 ALTER TABLE `comentarios`
-  ADD CONSTRAINT `id_evento` FOREIGN KEY (`id_evento`) REFERENCES `eventos` (`id`);
+  ADD CONSTRAINT `comentarios_ibfk_1` FOREIGN KEY (`id_evento`) REFERENCES `eventos` (`id`),
+  ADD CONSTRAINT `comentarios_ibfk_2` FOREIGN KEY (`nombre`) REFERENCES `usuarios` (`nick`);
 
 --
--- Filtros para la tabla `comentarios1`
+-- Filtros para la tabla `comentarios2`
 --
-ALTER TABLE `comentarios1`
-  ADD CONSTRAINT `comentarios1_ibfk_1` FOREIGN KEY (`id_evento`) REFERENCES `eventos` (`id`),
-  ADD CONSTRAINT `comentarios1_ibfk_2` FOREIGN KEY (`nombre`) REFERENCES `usuarios` (`nick`);
+ALTER TABLE `comentarios2`
+  ADD CONSTRAINT `id_evento` FOREIGN KEY (`id_evento`) REFERENCES `eventos` (`id`);
 
 --
 -- Filtros para la tabla `imagenes`
