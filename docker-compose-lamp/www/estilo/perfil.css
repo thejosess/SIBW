@@ -1,0 +1,155 @@
+
+*{
+    font-family: Arial, Helvetica, sans-serif;
+    box-sizing: border-box;/* para poder alinear section y aside a cada lado */
+}
+
+body{
+    margin:0;
+}
+
+.titulo {
+    /*modificando la clase titulo */
+    padding: 70px;
+    text-align: center;
+    background: #d37af7;
+    color: white;
+}
+
+.titulo h1{
+    font-size: 30px;
+}
+
+.nav a{
+    font-size: 24px;
+    padding: 14px 16px;
+    color:white;
+    text-align: center;
+    display: block;
+    float:left;
+    text-decoration: none; /* para que no salga el subrayado de enlace */
+}
+
+
+.nav a:hover{
+    color:black;
+    background-color: lightgrey;
+}
+
+.nav{
+    background-color: #333;
+    overflow: hidden;
+}
+
+
+#logo{
+    width: 5%;
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    width: 75px;
+    height: 75px;
+    /* con respecto al padre */
+}
+
+.centro{
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+
+aside{
+    background-color:grey;
+    -ms-flex: 30%;
+    flex: 30%;
+    padding: 15px;
+}
+
+section{
+    background-color:white;
+    -ms-flex: 70%;
+    flex: 70%;
+}
+
+
+
+footer{
+    padding: 2%;
+    background-color:lightgrey;
+    text-align: center;
+}
+
+
+
+
+.img-responsive{
+    width: 30%;
+    height: 30%;
+}
+
+@media screen and (max-width: 700px){
+    .centro{
+        flex-direction: column;
+    }
+}
+    
+@media screen and (max-width: 400px){
+    .nav a{
+        float:none;
+        width: 100%;
+    }
+    #tabla_contenidos .img-responsive{
+        display : none;
+    }
+    /* hago que desaparezcan las fotos pero mantenga el enlace y el puesto de la misma con dispositivos muy pequeños, ya que serian casi invisibles*/
+
+    #tabla_contenidos {
+        margin-left: 0%;
+    }
+
+}
+
+input[type=text]{
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    box-sizing: border-box;
+}
+
+input[type=submit]{
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    box-sizing: border-box;
+    background-color:lightslategrey;
+    color: black;
+}
+
+input[type=submit]:hover{
+        color:black;
+        background-color: lightgrey;
+}
+
+
+.perfil{
+    position:relative;
+    
+}
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    margin: auto;
+    text-align: center;
+    font-family: arial;
+    width: 80%;
+    height: 90%;
+  }
+  
+  .title {
+    color: grey;
+    font-size: 18px;
+  }
+  

@@ -35,6 +35,7 @@
             </p>
 
             {% block boton %}
+            {% if logueado %}
             <div class="comenta">
                 <button id="boton" onclick="Comenta(this)">
                     Comenta
@@ -43,6 +44,7 @@
                     Cerrar
                 </button>
             </div>
+            {% endif %}
             {%endblock %}
 
             <div>
@@ -120,7 +122,13 @@
                         {{ comentario[1] }} 
                     </p> 
                     <p>
-                        {{ comentario[2] }}  a las {{ comentario[3] }} 
+                        {{ comentario[2] }}  a las {{ comentario[3] }}
+
+                        {% if usuario['tipo'] >= 1 %}
+
+                        <a href="evento.php?idEvento={{ evento['id_evento'] }}&id_coment={{ comentario[4] }}&borrar=true"> <img src="/imagenes/papelera.png" class="papelera"></a>
+                        {% endif %}
+
                     </p>
                 </div>
                 {% endfor %}

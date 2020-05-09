@@ -76,7 +76,7 @@
       $contador = 0;
 
       while($row = $res->fetch_assoc()){
-        $comentarios [$contador] = [$row['nombre'], $row['comentario'], $row['fecha'], $row['hora']];
+        $comentarios [$contador] = [$row['nombre'], $row['comentario'], $row['fecha'], $row['hora'],$row['id_comentario']];
         $contador = $contador + 1;
       }
     }
@@ -85,7 +85,7 @@
       $contador = 0;
 
       while($row = $res->fetch_assoc()){
-        $comentarios [$contador] = [$row['nombre'], $row['comentario'], $row['fecha'], $row['hora']];
+        $comentarios [$contador] = [$row['nombre'], $row['comentario'], $row['fecha'], $row['hora'],$row['id_comentario']];
         $contador = $contador + 1;
       }
     }
@@ -197,7 +197,7 @@
     $nick = mysqli_real_escape_string($mysqli, $datos['nick']);
     $contraseña = mysqli_real_escape_string($mysqli, $datos['pass']);
     $contraseña = password_hash($contraseña, PASSWORD_DEFAULT);
-    $tipo = "registrado";
+    $tipo = 0;
     $path = mysqli_real_escape_string($mysqli,$datos['ruta']);
     $apellido = mysqli_real_escape_string($mysqli,$datos['apellido']);
 
@@ -258,7 +258,7 @@
 
       if($usuario->num_rows > 0){
         $row = $usuario->fetch_assoc();
-        $datosUsuario = ['nick' => $row['nick'], 'apellido' => $row['apellido1'], 'email' => $row['email'], 'pass' => $row['pass'], 'avatar' => $row['avatar']];
+        $datosUsuario = ['nick' => $row['nick'], 'apellido' => $row['apellido1'], 'email' => $row['email'], 'pass' => $row['pass'], 'avatar' => $row['avatar'], 'tipo' => $row['tipo']];
       }
       else{
         $datosUsuario = null;
@@ -271,7 +271,15 @@
     return $datosUsuario;
 
   }
-  //tengo que devolver un array porque mirar telegram
 
+  function borrarComentario($id_comentario, $idEvento){
+    getConexion();
+    global $mysqli;
+
+    $idEvento = (int)$idEvento;
+    $id_comentario = (int)$id_comentario;
+
+    $res = $mysqli->query("DELETE FROM comentarios WHERE id_comentario='" . $id_comentario . "' and id_evento='" . $idEvento . "'" );
+  }
 
 ?>

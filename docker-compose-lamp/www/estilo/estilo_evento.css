@@ -209,6 +209,15 @@ section .caption{
     opacity:0.5;
 }
 
+.papelera{
+    float:right;
+    width: 30px;
+    height: 30px;
+}
+
+.papelera:hover{
+    opacity:0.5;
+}
 
 .comenta{
     padding-left: 5%;

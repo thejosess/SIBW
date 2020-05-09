@@ -11,7 +11,6 @@
   $evento = getEvento($idEvento);
 
   /* son los controladores */
-  checkLogin("Juan","1234");
 
 
   // $comentarios = getComentarios($idEvento);

@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.1
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: mysql:3306
--- Tiempo de generación: 06-05-2020 a las 15:50:54
--- Versión del servidor: 8.0.19
--- Versión de PHP: 7.4.1
+-- Tiempo de generación: 09-05-2020 a las 17:38:22
+-- Versión del servidor: 8.0.20
+-- Versión de PHP: 7.4.5
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -62,7 +61,9 @@ INSERT INTO `comentarios` (`id_comentario`, `nombre`, `comentario`, `fecha`, `ho
 (18, 'Andrea', 'Me habias convencido.', '2020-06-04', '19:14:05', 9),
 (53, 'Juan', 'probando                        \r\n                    ', '2020-05-05', '06:26:23', 1),
 (54, 'Juan', 'probando                        \r\n                    ', '2020-05-05', '06:46:34', 1),
-(55, 'Juan', 'deberia de ir guay                        \r\n                    ', '2020-05-05', '06:49:09', 5);
+(55, 'Juan', 'deberia de ir guay                        \r\n                    ', '2020-05-05', '06:49:09', 5),
+(56, 'Prueba', 'probando, dos, tres                        \r\n                    ', '2020-05-06', '06:14:44', 1),
+(57, 'Prueba', 'asdfasdf\r\n                    ', '2020-05-06', '06:15:01', 5);
 
 -- --------------------------------------------------------
 
@@ -187,21 +188,21 @@ INSERT INTO `palabrasBaneadas` (`palabra`) VALUES
 CREATE TABLE `usuarios` (
   `nick` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `apellido1` varchar(200) NOT NULL,
-  `apellido2` varchar(200) NOT NULL,
   `email` varchar(200) NOT NULL,
-  `telefono` int NOT NULL,
-  `direccion` varchar(200) NOT NULL,
-  `tipo` varchar(200) NOT NULL,
-  `pass` varchar(200) NOT NULL
+  `tipo` int NOT NULL,
+  `pass` varchar(200) NOT NULL,
+  `avatar` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuarios` (`nick`, `apellido1`, `apellido2`, `email`, `telefono`, `direccion`, `tipo`, `pass`) VALUES
-('Juan', 'Garcia', 'Sanchez', 'garci@gmail.com', 621756384, 'Calle dirección nº1', 'registrado', '1234'),
-('Lucia', 'Lopez', 'Garci', 'luci3@gmail.com', 631456709, 'Calle dirección nº1', 'registrado', '1234');
+INSERT INTO `usuarios` (`nick`, `apellido1`, `email`, `tipo`, `pass`, `avatar`) VALUES
+('Jose', 'Santos', 'josess09@hotmail.es', 0, '$2y$10$l5qTB6sG10PfLTK2LSEBGu9T5w7h7UdXK7r2/06acuVt6DQ/ZsG46', 'imagenes/avatares/1.jpg'),
+('Juan', 'Garcia', 'garci@gmail.com', 0, '1234', ''),
+('Lucia', 'Lopez', 'luci3@gmail.com', 0, '1234', ''),
+('Pepe', 'Salvador', 'santossalvador99@gmail.com', 1, '$2y$10$l5qTB6sG10PfLTK2LSEBGu9T5w7h7UdXK7r2/06acuVt6DQ/ZsG46', 'imagenes/avatares/1.jpg');
 
 --
 -- Índices para tablas volcadas
@@ -255,7 +256,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `comentarios`
 --
 ALTER TABLE `comentarios`
-  MODIFY `id_comentario` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
+  MODIFY `id_comentario` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
 
 --
 -- AUTO_INCREMENT de la tabla `comentarios1`
