@@ -17,7 +17,8 @@
   #redireccionas todas las página
   if (startsWith($uri, "/evento")){
     include("scripts/evento.php");
-  }  else if(startsWith($uri, "/imprimir"))
+  }
+  else if(startsWith($uri, "/imprimir"))
   {
     include("scripts/imprimir.php");
   }
@@ -40,7 +41,11 @@
   else if(startsWith($uri, "/perfil"))
   {
     include("scripts/perfil.php");
-  }      
+  }
+  else if(startsWith($uri, "/modificarComentario"))
+  {
+    include("scripts/modificarComentario.php");
+  }       
   else
   {
     if($_SESSION['logueado'] == true){

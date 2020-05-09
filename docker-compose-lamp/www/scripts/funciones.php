@@ -4,8 +4,9 @@
   if ($_SERVER['REQUEST_METHOD'] === 'POST'){
     if(isset($_GET['nombre']) && isset($_GET['email']))
       addComentarios($_POST['id'],$_GET['nombre'],$_POST['texto']);
-
-  }
+      $id = $_POST['id'];
+      header("refresh:0.5;url=evento/$id");
+    }
   $evento = getEvento($_POST['id']);
 
   session_start();

@@ -24,12 +24,17 @@
   }
 
 
+  /* usuario normal tipo = 0
+  usuario moderador = 1
+  usuario gestor del sitios = 2
+  superusuario = 3*/
+
   if($logueado && $usuario['tipo'] >= 1){
     if(isset($_GET['id_coment']) && $_GET['borrar'] == true){
       $id_comentario = $_GET['id_coment'];
       $idEvento = $_GET['idEvento'];
       borrarComentario($id_comentario, $idEvento);
-      header("Location: evento.php/$id_comentario");
+      header("refresh:0.5;url=evento/$idEvento");
       /* arreglar esto */
     }
   }

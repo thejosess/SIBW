@@ -209,15 +209,17 @@ section .caption{
     opacity:0.5;
 }
 
-.papelera{
+.papelera, .pencil{
     float:right;
     width: 30px;
     height: 30px;
 }
 
-.papelera:hover{
+.papelera:hover, .pencil:hover{
     opacity:0.5;
 }
+
+
 
 .comenta{
     padding-left: 5%;

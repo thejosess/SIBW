@@ -282,4 +282,23 @@
     $res = $mysqli->query("DELETE FROM comentarios WHERE id_comentario='" . $id_comentario . "' and id_evento='" . $idEvento . "'" );
   }
 
+  function getComentario($id_comentario){
+    getConexion();
+    global $mysqli;
+
+    $res = $mysqli->query("SELECT * FROM comentarios WHERE id_comentario='" . $id_comentario . "'");
+    $row = $res->fetch_assoc();
+
+    $comentario  = ['nombre' => $row['nombre'],'comentario' => $row['comentario'],'fecha' => $row['fecha'], 'hora' => $row['hora'],'id_evento' =>$row['id_evento'],'id_comentario' =>$row['id_comentario']];
+
+    return $comentario;
+  }
+
+  function modificarComentario($id_comentario,$idEvento,$texto){
+    getConexion();
+    global $mysqli;
+    $res = $mysqli->query("UPDATE comentarios SET comentario='$texto' WHERE id_comentario='" . $id_comentario . "'" );
+    
+  }
+
 ?>

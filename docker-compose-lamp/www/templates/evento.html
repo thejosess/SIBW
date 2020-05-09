@@ -129,6 +129,8 @@
                         {% if usuario['tipo'] >= 1 %}
 
                         <a href="evento.php?idEvento={{ evento['id_evento'] }}&id_coment={{ comentario[4] }}&borrar=true"> <img src="/imagenes/papelera.png" class="papelera"></a>
+                        <a href="/modificarComentario.php?idEvento={{ evento['id_evento'] }}&id_coment={{ comentario[4] }}"> <img src="/imagenes/pencil.png" class="pencil"></a>
+
                         {% endif %}
 
                     </p>
