@@ -1,9 +1,24 @@
 <?php
   require_once 'bd.php';
 
-  addComentarios($_POST['id'],$_POST['nombre'],$_POST['texto']);
+  if ($_SERVER['REQUEST_METHOD'] === 'POST'){
+    if(isset($_GET['nombre']) && isset($_GET['email']))
+      addComentarios($_POST['id'],$_GET['nombre'],$_POST['texto']);
+
+  }
   $evento = getEvento($_POST['id']);
 
-  echo $twig->render('evento.html', ['evento' => $evento, 'comentario1' => $comentario1, 'comentario2' => $comentario2, 'palabras' => $palabras, 'id_evento' => $idEvento]);
+  session_start();
+  $logueado = false;
+
+  if(isset($_SESSION['logueado']))
+    $logueado = true;
+
+  if(isset($_SESSION['email'])){
+      $usuario = getUsuario($_SESSION['email']);
+  }
+
+
+  echo $twig->render('evento.html', ['evento' => $evento, 'palabras' => $palabras, 'logueado' => $logueado, 'usuario' => $usuario]);
 
 ?>

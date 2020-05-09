@@ -97,11 +97,13 @@
 
             <div class = "newComentario">
 
-                <form class="formulario" method="POST" action="/funciones.php">
+                <form class="formulario" method="POST" action="/funciones.php?nombre={{ usuario['nick'] }}&email={{ usuario['email'] }}">
                     <input type="text" name="id" value = "{{ evento['id_evento'] }}" class="hidden"><br>
                 
-                    Nombre:<input id="nombre" type="text" name="nombre"><br>
-                    Email:<input id="mail" type="email" name="mail"><br><br>
+                    <!-- Nombre:<input id="nombre" type="text" name="nombre"><br>
+                    Email:<input id="mail" type="email" name="mail"><br><br> -->
+
+
 
                     Comentario:
                     <textarea id="texto" type="textarea" name="texto" oninput="banear()"></textarea>
