@@ -1,6 +1,7 @@
 {%extends "index.html"%}
 
 {% block estilo %}<link rel="stylesheet" type="text/css" href="estilo/perfil.css" />{% endblock %}
+{% block javascript %}<script type="text/javascript" src="/Javascript/JavaScriptUsuarios.js"></script>{% endblock %}
 
 
 {% block titulo %} Perfil {%endblock%}
@@ -19,9 +20,11 @@
     <div class="container">
         Nick:<input id="nick" type="text" name="nick" placeholder={{ usuario['nick'] }}><br>
         Apellido:<input id="apellido" type="text" name="apellido" placeholder={{ usuario['apellido'] }}><br>
-        Contraseña:<input id="pass" type="text" name="pass" placeholder="contraseña antigua"><br>
-         Nueva contraseña:<input id="pass2" type="text" name="pass2" placeholder="confirmar contraseña"><br>
-         Email:<input id="email" type="text" name="email" placeholder={{ usuario['email'] }}><br>
+        Contraseña:<input id="pass" type="password" name="pass" placeholder="contraseña antigua"><br>
+        Nueva contraseña:<input id="pass2" type="password" name="pass2" placeholder="confirmar contraseña"><br>
+        <input type="checkbox" onclick="mostrarContraseña()">Mostrar contraseña<br>
+
+        Email:<input id="email" type="text" name="email" placeholder={{ usuario['email'] }}><br>
 
         Avatar: <input type="file" id="avatar" name="imagen" /><br>
 

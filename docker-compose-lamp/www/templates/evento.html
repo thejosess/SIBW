@@ -34,6 +34,9 @@
                 <h3>28/02/2020 ~ 12:00</h3>
             </p>
 
+
+
+
             {% block boton %}
             {% if logueado %}
             <div class="comenta">
@@ -43,6 +46,14 @@
                 <button id="boton2" onclick="Cerrar()">
                     Cerrar
                 </button>
+
+                {% if usuario['tipo'] >= 1 %}   
+
+                    <a href="/todosComentarios.php"><button id="boton">
+                        Todos los comentarios 
+                    </button>
+                    </a>
+                {% endif %}
             </div>
             {% endif %}
             {%endblock %}

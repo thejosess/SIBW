@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: mysql:3306
--- Tiempo de generación: 09-05-2020 a las 18:06:12
+-- Tiempo de generación: 13-05-2020 a las 17:47:00
 -- Versión del servidor: 8.0.20
 -- Versión de PHP: 7.4.5
 
@@ -41,14 +41,19 @@ CREATE TABLE `comentarios` (
 --
 
 INSERT INTO `comentarios` (`id_comentario`, `nombre`, `comentario`, `fecha`, `hora`, `id_evento`) VALUES
-(1, 'Juan', ' Es una muy buena pagina ', '2020-10-03', '12:34:40', 1),
+(1, 'Juan', 'Es una buena página,creo ~ modificado por el moderador Pepe', '2020-10-03', '12:34:40', 1),
 (2, 'Lucia', ' Me encanta vuestro analisis de la A6100 ', '2020-10-01', '20:45:05', 1),
 (8, 'Pepe', '¿Viene con kit de fabrica?', '2020-05-09', '05:48:33', 2),
 (9, 'Pepe', 'Creo que me la voy a comprar', '2020-05-09', '05:49:59', 3),
 (10, 'Pepe', 'Creo que sois un poco fanboys', '2020-05-09', '05:54:52', 9),
 (11, 'Pepe', 'Algun dia sere fotografo como vosotros', '2020-05-09', '05:55:45', 6),
-(12, 'Pepe', 'santossalvador99@gmail.com', '2020-05-09', '06:01:16', 4),
-(14, 'Pepe', 'Que fraude de camara chaval', '2020-05-09', '06:05:10', 7);
+(12, 'Pepe', 'cambiado x4modificado por Pepe', '2020-05-09', '06:01:16', 4),
+(15, 'Pepe', 'Me la compraria sin duda', '2020-05-09', '06:23:00', 7),
+(16, 'Pepe', 'habeis comprado leche?', '2020-05-09', '06:23:45', 7),
+(17, 'Pepe', 'Le puede venir bien a gente con poca experiencia', '2020-05-09', '06:25:32', 8),
+(18, 'Pepe', 'Util y conciso', '2020-05-09', '06:25:59', 8),
+(19, 'Pepe', 'Sin duda la mejor del mercado', '2020-05-09', '06:27:05', 5),
+(20, 'Pepe', 'Eres un poco tonto', '2020-05-09', '06:27:43', 5);
 
 -- --------------------------------------------------------
 
@@ -205,6 +210,8 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`nick`, `apellido1`, `email`, `tipo`, `pass`, `avatar`) VALUES
+('Antonio', 'Garcia', 'prueba3@gmail.com', 0, '$2y$10$6rkaVC8fdfcdvhhfloE2m.ZA4n0Xny18OZy54DRiFeCZzszw7Dm6a', 'imagenes/avatares/8.jpg'),
+('David', 'Sanchez', 'realmadrid23@hotmail.es', 0, '$2y$10$Vcz4DK8I47s7e3l1xoQy6.qAXXtkZPArPkG/K7YOyvhHp8ZftT5Zy', 'imagenes/avatares/15.jpg'),
 ('Jose', 'Santos', 'josess09@hotmail.es', 0, '$2y$10$l5qTB6sG10PfLTK2LSEBGu9T5w7h7UdXK7r2/06acuVt6DQ/ZsG46', 'imagenes/avatares/1.jpg'),
 ('Juan', 'Garcia', 'garci@gmail.com', 0, '$2y$10$l5qTB6sG10PfLTK2LSEBGu9T5w7h7UdXK7r2/06acuVt6DQ/ZsG46', ''),
 ('Lucia', 'Lopez', 'luci3@gmail.com', 0, '12$2y$10$l5qTB6sG10PfLTK2LSEBGu9T5w7h7UdXK7r2/06acuVt6DQ/ZsG4634', ''),
@@ -262,7 +269,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `comentarios`
 --
 ALTER TABLE `comentarios`
-  MODIFY `id_comentario` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_comentario` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT de la tabla `comentarios2`

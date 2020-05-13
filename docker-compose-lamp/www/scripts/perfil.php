@@ -1,14 +1,7 @@
 <?php
 
 require_once 'bd.php';
-
 require_once 'comprobarEmail.php';
-
-
-$carga = new \Twig\Loader\ArrayLoader([
-    'index' => 'Usuario logueado',
-]);
-$mensaje = new \Twig\Environment($carga);
 
 session_start();
  
@@ -67,12 +60,6 @@ if(isset($_SESSION['email'])){
     $usuario = getUsuario($_SESSION['email']);
 }
 
-if(isset($_SESSION['logueado']))
-    $prueba = "va bien";
-    else
-    $prueba = "no va bien";
-
-echo "<script>console.log('Debug : " . $prueba . "' );</script>";
 
 echo $twig->render('perfil.html',['usuario' => $usuario]); 
 

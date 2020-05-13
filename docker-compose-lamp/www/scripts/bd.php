@@ -294,6 +294,24 @@
     return $comentario;
   }
 
+  function getAllComentarios(){
+    getConexion();
+    global $mysqli;
+
+    //obtengo los comentarios
+    $res = $mysqli->query("SELECT * FROM comentarios");
+    if($res->num_rows > 0){
+
+      $contador = 0;
+
+      while($row = $res->fetch_assoc()){
+        $comentarios [$contador] = [$row['nombre'], $row['comentario'], $row['fecha'], $row['hora'],$row['id_comentario'], $row['id_evento']];
+        $contador = $contador + 1;
+      }
+    }
+    return $comentarios;
+  }
+
   function modificarComentario($id_comentario,$idEvento,$texto){
     getConexion();
     global $mysqli;

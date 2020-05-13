@@ -45,7 +45,11 @@
   else if(startsWith($uri, "/modificarComentario"))
   {
     include("scripts/modificarComentario.php");
-  }       
+  }
+  else if(startsWith($uri, "/todosComentarios"))
+  {
+    include("scripts/todosComentarios.php");
+  }
   else
   {
     if($_SESSION['logueado'] == true){

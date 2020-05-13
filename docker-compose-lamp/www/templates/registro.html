@@ -2,7 +2,7 @@
 
 {% block estilo %}<link rel="stylesheet" type="text/css" href="estilo/login.css" />{% endblock %}
 
-{% block javascript %}<script type="text/javascript" src="/Javascript/JavaScript.js"></script>{% endblock %}
+{% block javascript %}<script type="text/javascript" src="/Javascript/JavaScriptUsuarios.js"></script>{% endblock %}
 
 
 {% block titulo %} Registro {%endblock%}
@@ -22,14 +22,13 @@
 
         <div class="container">
             Nick:<input id="nick" type="text" name="nick"><br>
-            Contraseña:<input id="pass" type="text" name="pass"><br>
+            Contraseña:<input id="pass" type="password" name="pass"><br>
+            <input type="checkbox" onclick="mostrarContraseña()">Mostrar contraseña
+
             Apellido:<input id="apellido" type="text" name="apellido"><br>
             Email:<input id="email" type="text" name="email"><br>
 
-
-          
             Avatar: <input type="file" id="avatar" name="imagen" /><br>
-
             <input type="submit" value = "Registrarse">
 
         </div>
