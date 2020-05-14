@@ -24,6 +24,12 @@
                     {% endblock %}
     {% block cuerpo %}
         <section>
+            {% if usuario['tipo'] >= 2 %}
+            <a href="/gestionEventos.php?idEvento={{ evento['id_evento'] }}&borrar=true"> <img src="/imagenes/papelera.png" class="papelera"></a>
+            <a href="/gestionEventos.php?&añadir=true"> <img src="/imagenes/add_evento.png" class="papelera"></a>
+            <a href="/gestionEventos.php?idEvento={{ evento['id_evento'] }}&modificar=true"> <img src="/imagenes/edit_evento.png" class="papelera"></a>
+            {% endif %}
+
             <h1>
                 Analisis de rendimiento de la camara reflex {{ evento['modelo']}}
             </h1>
@@ -33,6 +39,30 @@
             <p>
                 <h3>28/02/2020 ~ 12:00</h3>
             </p>
+
+
+            {% if evento['galeria'] is empty %}
+            {{ galeria }}
+            {% else %}
+                <div class="w3-content w3-display-container">
+                {% for imagen in evento['galeria'] %}
+                <!-- hay que comprobarlo -->
+                    
+                    <img class="mySlides" src="{{ imagen }}" >
+<!--                     <img class="mySlides" src="{{ evento['segundaFoto'] }}" >
+ -->
+
+                {% endfor %} 
+                <script language="javascript">
+                    start();
+                 </script>
+                 
+                    <button class="w3-button w3-black w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
+                    <button class="w3-button w3-black w3-display-right" onclick="plusDivs(1)">&#10095;</button>
+                </div>
+            {% endif %}
+
+
 
 
 

@@ -23,6 +23,8 @@
     //asi consigo que no se abran multiples veces la conexión,la primera que llama es la que lo abre
     //el resto acceden a la variable global para hacer las consultas
 
+    $contador = 0;
+
     $idEvento = (int)$idEvento;
     //asi me aseguro de que no me puedan meter instrucciones sql
 
@@ -56,6 +58,11 @@
       $imagen2['ruta_imagen'] = $row['ruta_imagen'];
       $imagen2['pie_foto'] = $row['pie_foto'];
 
+      while($row = $imagenes->fetch_assoc()){
+        $galeria [$contador] = $row['ruta_imagen'];
+        $contador = $contador + 1;
+        $var = $row['ruta_imagen'];
+      }
     }
     else{
       $imagenes = $mysqli->query("SELECT * FROM imagenes WHERE id_evento=1");
@@ -65,7 +72,11 @@
       $row = $imagenes->fetch_assoc();
       $imagen2['ruta_imagen'] = $row['ruta_imagen'];
       $imagen2['pie_foto'] = $row['pie_foto'];
-      //se podria hacer con un while como con los comentarios
+
+      while($row = $imagenes->fetch_assoc()){
+        $galeria [$contador] = $row['ruta_imagen'];
+        $contador = $contador + 1;
+      }
     }
 
 
@@ -73,7 +84,6 @@
     $res = $mysqli->query("SELECT * FROM comentarios WHERE id_evento=" .$idEvento);
     if($res->num_rows > 0){
 
-      $contador = 0;
 
       while($row = $res->fetch_assoc()){
         $comentarios [$contador] = [$row['nombre'], $row['comentario'], $row['fecha'], $row['hora'],$row['id_comentario']];
@@ -82,7 +92,6 @@
     }
     else{
       $res = $mysqli->query("SELECT * FROM comentarios WHERE id_evento= 1");
-      $contador = 0;
 
       while($row = $res->fetch_assoc()){
         $comentarios [$contador] = [$row['nombre'], $row['comentario'], $row['fecha'], $row['hora'],$row['id_comentario']];
@@ -92,9 +101,7 @@
 
 
 
-    $evento = array('id_evento' => $idEvento ,'modelo' => $modelo,'comentarios' =>$comentarios, 'analisis' => $analisis,'conclusiones' => $conclusiones, 'primeraFoto' => $imagen1['ruta_imagen'], 'piePrimeraFoto' => $imagen1['pie_foto'],'segundaFoto' => $imagen2['ruta_imagen'],'pieSegundaFoto' => $imagen2['pie_foto']);
-
-    
+    $evento = array('id_evento' => $idEvento ,'modelo' => $modelo,'comentarios' =>$comentarios, 'analisis' => $analisis,'conclusiones' => $conclusiones, 'primeraFoto' => $imagen1['ruta_imagen'], 'piePrimeraFoto' => $imagen1['pie_foto'],'segundaFoto' => $imagen2['ruta_imagen'],'pieSegundaFoto' => $imagen2['pie_foto'], 'galeria' => $galeria);
 
     return $evento;
   }
@@ -318,5 +325,57 @@
     $res = $mysqli->query("UPDATE comentarios SET comentario='$texto' WHERE id_comentario='" . $id_comentario . "'" );
     
   }
+
+
+  function añadirEvento($modelo,$conclusiones,$analisis){
+    getConexion();
+    global $mysqli;
+
+    $modelo = mysqli_real_escape_string($mysqli, $modelo);
+    $conclusiones = mysqli_real_escape_string($mysqli, $conclusiones);
+    $analisis = mysqli_real_escape_string($mysqli, $analisis);
+
+
+
+    $res = $mysqli->query("INSERT INTO eventos(modelo,analisis,conclusiones) VALUES ('$modelo','$analisis','$conclusiones')"); 
+    $idEvento = $mysqli->query("SELECT last_insert_id()");
+    $idEvento = $idEvento->fetch_array();
+    $idEvento = $idEvento['last_insert_id()'];
+    //crear una nueva etquita o no???
+
+    return $idEvento;
+  }
+
+  function añadirImagenes($imagenes, $idEvento){
+    getConexion();
+    global $mysqli;
+
+    $idEvento = (int)$idEvento;
+
+
+    for ($i = 0; $i < count($imagenes); $i++) {
+      $res = $mysqli->query("INSERT INTO imagenes(ruta_imagen,id_evento) VALUES ('$imagenes[$i]','$idEvento')");
+    }    
+
+
+    
+  }
+
+  function modificarEvento($idEvento,$modelo,$conclusiones,$analisis){
+    getConexion();
+    global $mysqli;
+
+    $modelo = mysqli_real_escape_string($mysqli, $modelo);
+    $conclusiones = mysqli_real_escape_string($mysqli, $conclusiones);
+    $analisis = mysqli_real_escape_string($mysqli, $analisis);
+
+    $idEvento = (int)$idEvento;
+
+    $res = $mysqli->query("UPDATE eventos SET modelo='$modelo',analisis='$analisis',conclusiones='$conclusiones' WHERE id='$idEvento"); 
+
+    //crear una nueva etquita o no???
+  }
+
+
 
 ?>

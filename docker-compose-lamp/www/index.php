@@ -50,6 +50,10 @@
   {
     include("scripts/todosComentarios.php");
   }
+  else if(startsWith($uri, "/gestionEventos"))
+  {
+    include("scripts/gestionEventos.php");
+  }
   else
   {
     if($_SESSION['logueado'] == true){

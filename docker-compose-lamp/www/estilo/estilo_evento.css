@@ -219,6 +219,10 @@ section .caption{
     opacity:0.5;
 }
 
+.mySlides {
+    display:none;
+    width:60%;
+}
 
 
 .comenta{
