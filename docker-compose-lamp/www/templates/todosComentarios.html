@@ -1,0 +1,43 @@
+{%extends "index.html"%}
+
+{% block estilo %}<link rel="stylesheet" type="text/css" href="estilo/todosComentarios.css" />{% endblock %}
+
+
+
+{% block titulo %} Login {%endblock%}
+
+{% block nav %}
+<div class="nav">
+    <a href="#"> </a>
+</div>
+{% endblock %}
+
+
+{% block aside %}
+{% endblock %}
+
+{% block cuerpo %}
+<div id = "hueco"><br>
+    {% for comentario in comentarios%}
+    <div id = "comment1"> 
+        <p>
+            <strong><u>  {{ comentario[0] }}  </u></strong>
+        </p>
+        <p>  
+            {{ comentario[1] }} 
+        </p> 
+        <p>
+            {{ comentario[2] }}  a las {{ comentario[3] }} del id del evento {{ comentario[5] }}
+
+            {% if usuario['tipo'] >= 1 %}
+
+            <a href="evento.php?idEvento={{ comentario[5] }}&id_coment={{ comentario[4] }}&borrar=true"> <img src="/imagenes/papelera.png" class="papelera"></a>
+            <a href="/modificarComentario.php?idEvento={{ comentario[5] }}&id_coment={{ comentario[4] }}&todos=true"> <img src="/imagenes/pencil.png" class="pencil"></a>
+
+            {% endif %}
+
+        </p>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

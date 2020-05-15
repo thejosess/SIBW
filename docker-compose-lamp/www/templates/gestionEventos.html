@@ -1,0 +1,86 @@
+{%extends "index.html"%}
+
+{% block estilo %}<link rel="stylesheet" type="text/css" href="estilo/perfil.css" />{% endblock %}
+
+
+{% block titulo %} Gestión eventos {%endblock%}
+
+{% block nav %}
+<div class="nav">
+    <a href="#"> </a>
+</div>
+{% endblock %}
+
+
+{% block aside %}
+<!-- modificar evento -->
+    {% if modificar %}
+        <aside>
+        <form action="/gestionEventos.php?idEvento={{ evento['id_evento'] }}&modificar=true" method="POST" class="form" enctype="multipart/form-data">
+
+            <div class="container">
+                Modelo:<input id="modelo" type="text" name="modelo"><br>
+                Analisis:<input id="analisis" type="text" name="analisis" rows="10" cols="60"><br>
+                Conclusiones:<input id="conclusiones" type="text" name="conclusiones" ><br>
+                Etiqueta:<input id="etiqueta" type="text" name="etiqueta" ><br>
+
+
+                Imagenes: <input type="file" id="imagenes" name="imagenes[]" multiple/><br>
+
+                <input type="submit" value = "Actualizar datos">
+
+            </div>
+
+        </form>
+        </aside>
+        
+    {% endif %}
+{% endblock %}
+
+
+
+{% block cuerpo %}
+<!-- añadir evento -->
+{% if añadir %}
+<aside>
+    <form action="/gestionEventos.php?añadir=true"" method="POST" class="form" enctype="multipart/form-data">
+    
+        <div class="container">
+            Modelo:<input id="modelo" type="text" name="modelo" }}><br>
+
+            <p>Analisis:</p>
+            <textarea class="textarea" type="text" name="analisis"  required rows="10" cols="60"></textarea><br>
+
+            <p>Conclusiones:</p>
+            <textarea class="textarea" type="text" name="conclusiones"  required rows="10" cols="60"></textarea><br>
+
+            <br>Imagenes: <input type="file" id="imagenes" name="imagenes[]" multiple/><br>
+
+            <input type="submit" value = "Añadir evento">
+
+        </div>
+    
+    </form>
+    </aside>
+{% elseif modificar%}
+    <div class = "perfil">
+
+
+        <h2 style="text-align:center">Tu perfil</h2>
+
+        <div class="card">
+            <img src="{{ evento['primeraFoto'] }}" class="img-responsive" >
+            <img src="{{ evento['segundaFoto'] }}" class="img-responsive">
+
+          <h1> Id evento: {{ evento['id_evento'] }} </h1>
+
+          <p class="title">{{ evento['modelo'] }}</p>
+
+          <p>{{ evento['analisis'] }}</p>
+          <p>{{ evento['conclusiones'] }}</p>
+        </div>
+
+    </div>
+{% endif %}
+
+{% endblock %}

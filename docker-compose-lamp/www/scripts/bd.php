@@ -356,9 +356,6 @@
     for ($i = 0; $i < count($imagenes); $i++) {
       $res = $mysqli->query("INSERT INTO imagenes(ruta_imagen,id_evento) VALUES ('$imagenes[$i]','$idEvento')");
     }    
-
-
-    
   }
 
   function modificarEvento($idEvento,$modelo,$conclusiones,$analisis){
@@ -371,9 +368,44 @@
 
     $idEvento = (int)$idEvento;
 
-    $res = $mysqli->query("UPDATE eventos SET modelo='$modelo',analisis='$analisis',conclusiones='$conclusiones' WHERE id='$idEvento"); 
+    $res = $mysqli->query("UPDATE eventos SET modelo='$modelo',analisis='$analisis',conclusiones='$conclusiones' WHERE id='" . $idEvento . "'" );
 
     //crear una nueva etquita o no???
+  }
+
+  function eliminarEvento($idEvento,$ruta){
+    getConexion();
+    global $mysqli;
+
+    $idEvento = (int)$idEvento;
+    $ruta = mysqli_real_escape_string($mysqli, $ruta);
+
+    $res = $mysqli->query("DELETE FROM imagenes WHERE id_evento='$idEvento'" );
+    $res = $mysqli->query("DELETE FROM eventos WHERE id='$idEvento'" );
+
+
+    //borrando directorio y fotos
+    if (is_dir($ruta)) { 
+      $objects = scandir($ruta); 
+      foreach ($objects as $object) { 
+        if ($object != "." && $object != "..") { 
+            unlink($ruta."/".$object); 
+        } 
+      } 
+      reset($objects); 
+      rmdir($ruta); 
+    }
+  }
+
+  function añadirEtiqueta($etiqueta, $idEvento){
+    getConexion();
+    global $mysqli;
+
+    $idEvento = (int)$idEvento;
+    $etiqueta = mysqli_real_escape_string($mysqli, $etiqueta);
+
+    $res = $mysqli->query("INSERT INTO etiquetas(etiqueta,id_evento) VALUES ('$etiqueta','$idEvento')");
+  
   }
 
 

@@ -1,0 +1,45 @@
+{%extends "index.html"%}
+
+{% block estilo %}<link rel="stylesheet" type="text/css" href="estilo/login.css" />{% endblock %}
+
+
+{% block titulo %} Modificar comentario {%endblock%}
+
+{% block nav %}
+<div class="nav">
+    <a href="#"> </a>
+</div>
+{% endblock %}
+
+
+{% block aside %}
+{% endblock %}
+
+{% block cuerpo %}
+
+<div class="informacion-modificar">
+    <h3>Panel para modificar el comentario</h3>
+    <h4><strong>Autor</strong></h4>
+    <p>{{ comentario['nombre'] }}</p>
+
+    <h4><strong>Texto</strong></h4>
+    <p>{{ comentario['comentario'] }}</p>
+
+</div>
+
+
+    <form action="/modificarComentario.php?idEvento={{ comentario['id_evento'] }}&id_coment={{ comentario['id_comentario'] }}" method="POST" class="form">
+
+        <div class="container">
+            <p>Comentario</p>
+            <textarea class="textarea" type="text" name="nuevoComentario" placeholder="Modifica el comentario" required rows="10" cols="60"></textarea>
+
+            <!-- puedo añadir mas campos -->
+
+            <input type="submit" value = "Modificar">
+<!-- meter redirecciones y mensajes de error -->
+        </div>
+    </form>
+
+
+{% endblock %}
