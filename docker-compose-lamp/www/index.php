@@ -1,5 +1,6 @@
 <?php
   require_once "/usr/local/lib/php/vendor/autoload.php";
+  require_once "scripts/bd.php";
   //carga las funciones de twig
 
   $loader = new \Twig\Loader\FilesystemLoader('templates');
@@ -54,12 +55,17 @@
   {
     include("scripts/gestionEventos.php");
   }
+  else if(startsWith($uri, "/gestionUsuarios"))
+  {
+    include("scripts/gestionUsuarios.php");
+  }
   else
   {
-    if($_SESSION['logueado'] == true){
+    if($_SESSION['logueado'] == true && isset($_SESSION['email'])){
       $logueado = true;
+      $usuario = getUsuario($_SESSION['email']);
     }
-    echo $twig->render('index.html',['logueado' => $logueado]); 
+    echo $twig->render('index.html',['logueado' => $logueado, 'usuario' => $usuario]); 
   }
   
 //poner en index el resto de paginas php nuevas que no tengo para renderiizar y revisar

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: mysql:3306
--- Tiempo de generación: 14-05-2020 a las 22:39:03
+-- Tiempo de generación: 15-05-2020 a las 14:49:58
 -- Versión del servidor: 8.0.20
 -- Versión de PHP: 7.4.5
 
@@ -106,16 +106,26 @@ INSERT INTO `comentarios2` (`id_comentario`, `nombre`, `comentario`, `fecha`, `h
 --
 
 CREATE TABLE `etiquetas` (
-  `idEvento` int NOT NULL,
-  `modelo` varchar(200) NOT NULL
+  `id_etiqueta` int NOT NULL,
+  `id_evento` int NOT NULL,
+  `etiqueta` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Volcado de datos para la tabla `etiquetas`
 --
 
-INSERT INTO `etiquetas` (`idEvento`, `modelo`) VALUES
-(1, 'Sony A6100');
+INSERT INTO `etiquetas` (`id_etiqueta`, `id_evento`, `etiqueta`) VALUES
+(1, 37, ''),
+(2, 37, ''),
+(3, 37, ''),
+(4, 37, ''),
+(5, 37, ''),
+(6, 37, ''),
+(7, 37, ''),
+(8, 37, 'callejera'),
+(10, 37, 'ancianos'),
+(11, 37, 'reflex');
 
 -- --------------------------------------------------------
 
@@ -149,8 +159,10 @@ INSERT INTO `eventos` (`id`, `modelo`, `analisis`, `conclusiones`) VALUES
 (12, 'sony x234', 'es una buena camara', 'Yo me la compraría'),
 (13, 'Canon COVID19', 'Aenean in egestas ante. Praesent rhoncus vehicula nunc vel consectetur. Vivamus fringilla commodo enim, eget feugiat mauris dignissim eget. Sed venenatis arcu neque. Cras egestas viverra tellus non volutpat. Proin ipsum libero, venenatis quis nisi sed, molestie euismod odio. Suspendisse potenti. Nam sed enim viverra, fermentum diam ac, interdum dui. Phasellus vitae felis ullamcorper dui faucibus efficitur. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Donec tellus elit, pharetra ac ipsum non, ultrices molestie libero. Morbi id massa in ex maximus lacinia vitae vitae sapien. Fusce ultrices magna ut mauris lacinia scelerisque. Sed a purus eu sem scelerisque vestibulum. Nam aliquet ac nunc et aliquet. ', 'Aenean in egestas ante. Praesent rhoncus vehicula nunc vel consectetur. Vivamus fringilla commodo enim, eget feugiat mauris dignissim eget. Sed venenatis arcu neque. Cras egestas viverra tellus non volutpat. Proin ipsum libero, venenatis quis nisi sed, molestie euismod odio. Suspendisse potenti. Nam sed enim viverra, fermentum diam ac, interdum dui. Phasellus vitae felis ullamcorper dui faucibus efficitur. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Donec tellus elit, pharetra ac ipsum non, ultrices molestie libero. Morbi id massa in ex maximus lacinia vitae vitae sapien. Fusce ultrices magna ut mauris lacinia scelerisque. Sed a purus eu sem scelerisque vestibulum. Nam aliquet ac nunc et aliquet. '),
 (15, 'sony Ultra mega X', 'Ut congue purus magna, sit amet iaculis dui vulputate vel. Duis fermentum turpis auctor bibendum tincidunt. Sed dapibus turpis eget dolor porta finibus. Vestibulum at tristique erat, nec porta diam. Nunc tristique eleifend finibus. Suspendisse maximus purus tellus, ac efficitur lectus tincidunt eu. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Maecenas arcu mauris, fringilla quis rutrum nec, dictum vitae arcu. In hac habitasse platea dictumst. Mauris est sem, pulvinar at sagittis in, commodo ut neque. ', 'Ut congue purus magna, sit amet iaculis dui vulputate vel. Duis fermentum turpis auctor bibendum tincidunt. Sed dapibus turpis eget dolor porta finibus. Vestibulum at tristique erat, nec porta diam. Nunc tristique eleifend finibus. Suspendisse maximus purus tellus, ac efficitur lectus tincidunt eu. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Maecenas arcu mauris, fringilla quis rutrum nec, dictum vitae arcu. In hac habitasse platea dictumst. Mauris est sem, pulvinar at sagittis in, commodo ut neque. '),
-(34, 'sony Ultra Mega 500', ' Aenean a pharetra mi. Morbi dapibus congue vehicula. Sed sapien nibh, pulvinar quis augue et, volutpat euismod dolor. Maecenas lacinia nec nulla eu condimentum. Vivamus porttitor ullamcorper convallis. Vestibulum efficitur diam vel purus dapibus mollis. Pellentesque tortor turpis, eleifend non ullamcorper quis, fringilla ac nulla. Curabitur tincidunt mattis imperdiet. Phasellus vitae odio vitae justo pulvinar elementum vel et nunc. Donec nec justo est. ', ' Integer mi velit, porttitor sit amet massa sed, vestibulum commodo velit. Interdum et malesuada fames ac ante ipsum primis in faucibus. Aliquam eu consequat mi, at pellentesque arcu. Mauris tincidunt, urna eget blandit convallis, quam arcu accumsan lectus, sit amet sollicitudin justo enim eu erat. Cras faucibus feugiat libero congue tristique. Quisque laoreet, quam vel ullamcorper maximus, nulla augue egestas massa, egestas condimentum lorem lacus sit amet sem. Integer ipsum metus, fermentum vel purus nec, molestie vulputate lectus. Nullam aliquet luctus metus, non semper velit. Pellentesque lacinia maximus orci, non pretium nulla rhoncus mattis. Aenean sagittis orci posuere odio mattis ullamcorper. '),
-(35, 'Canon Sony Pro 32', ' Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam pretium ipsum a metus imperdiet consequat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Aliquam ultricies consectetur risus ut fringilla. Donec aliquet congue mauris. Etiam pellentesque ex ut erat semper placerat. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc iaculis quis tortor eu finibus. Morbi quis velit aliquet, tincidunt justo sed, commodo turpis. Nunc a tempor leo. Morbi maximus, purus at congue eleifend, turpis mauris commodo mauris, ut molestie sem felis vel ipsum. Aliquam rhoncus augue at luctus tincidunt. Proin quis eros mauris. ', ' Pellentesque quis tortor ac turpis finibus tincidunt. Suspendisse ultrices diam in suscipit commodo. Integer turpis mi, malesuada at diam eu, pretium aliquam magna. Phasellus hendrerit bibendum leo, sed porta mi tincidunt vel. Sed congue lectus nec turpis faucibus, vitae pretium magna facilisis. Donec consequat sodales varius. Nunc arcu nisl, aliquam quis efficitur ac, scelerisque eget risus. Nulla non sem vehicula, condimentum nibh ut, volutpat massa. Sed aliquam, urna vitae mattis congue, diam lectus ultrices purus, ut facilisis leo mi et tellus. ');
+(34, 'hola', 'adios', ' Integer mi velit, porttitor sit amet massa sed, vestibulum commodo velit. Interdum et malesuada fames ac ante ipsum primis in faucibus. Aliquam eu consequat mi, at pellentesque arcu. Mauris tincidunt, urna eget blandit convallis, quam arcu accumsan lectus, sit amet sollicitudin justo enim eu erat. Cras faucibus feugiat libero congue tristique. Quisque laoreet, quam vel ullamcorper maximus, nulla augue egestas massa, egestas condimentum lorem lacus sit amet sem. Integer ipsum metus, fermentum vel purus nec, molestie vulputate lectus. Nullam aliquet luctus metus, non semper velit. Pellentesque lacinia maximus orci, non pretium nulla rhoncus mattis. Aenean sagittis orci posuere odio mattis ullamcorper. '),
+(35, 'Sony Mega Ultra Pandemia 2', ' Curabitur at tempus velit. Morbi diam purus, aliquam nec libero ac, maximus vehicula lacus. Aenean a posuere tellus. Duis ornare eros ex, non luctus augue pharetra quis. Maecenas vehicula feugiat sapien, quis varius nulla gravida nec. Proin eu pulvinar mi, quis sollicitudin arcu. Vestibulum ornare a ipsum et finibus. Sed vitae massa congue, ullamcorper libero ut, hendrerit arcu. Nam mi nisi, mattis in accumsan fringilla, condimentum et lacus. Phasellus in sodales lectus. ', ' Aenean a pharetra mi. Morbi dapibus congue vehicula. Sed sapien nibh, pulvinar quis augue et, volutpat euismod dolor. Maecenas lacinia nec nulla eu condimentum. Vivamus porttitor ullamcorper convallis. Vestibulum efficitur diam vel purus dapibus mollis. Pellentesque tortor turpis, eleifend non ullamcorper quis, fringilla ac nulla. Curabitur tincidunt mattis imperdiet. Phasellus vitae odio vitae justo pulvinar elementum vel et nunc. Donec nec justo est. ');
+INSERT INTO `eventos` (`id`, `modelo`, `analisis`, `conclusiones`) VALUES
+(37, 'Sony Mega Ultra Pandemia 2', ' Curabitur at tempus velit. Morbi diam purus, aliquam nec libero ac, maximus vehicula lacus. Aenean a posuere tellus. Duis ornare eros ex, non luctus augue pharetra quis. Maecenas vehicula feugiat sapien, quis varius nulla gravida nec. Proin eu pulvinar mi, quis sollicitudin arcu. Vestibulum ornare a ipsum et finibus. Sed vitae massa congue, ullamcorper libero ut, hendrerit arcu. Nam mi nisi, mattis in accumsan fringilla, condimentum et lacus. Phasellus in sodales lectus. ', ' Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam pretium ipsum a metus imperdiet consequat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Aliquam ultricies consectetur risus ut fringilla. Donec aliquet congue mauris. Etiam pellentesque ex ut erat semper placerat. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc iaculis quis tortor eu finibus. Morbi quis velit aliquet, tincidunt justo sed, commodo turpis. Nunc a tempor leo. Morbi maximus, purus at congue eleifend, turpis mauris commodo mauris, ut molestie sem felis vel ipsum. Aliquam rhoncus augue at luctus tincidunt. Proin quis eros mauris. ');
 
 -- --------------------------------------------------------
 
@@ -195,7 +207,24 @@ INSERT INTO `imagenes` (`id_imagen`, `ruta_imagen`, `id_evento`, `pie_foto`) VAL
 (58, '../imagenes/eventos/evento35/5.jpg', 35, NULL),
 (59, '../imagenes/eventos/evento35/6.svg', 35, NULL),
 (60, '../imagenes/eventos/evento35/7.jpg', 35, NULL),
-(61, '../imagenes/eventos/evento35/8.jpg', 35, NULL);
+(61, '../imagenes/eventos/evento35/8.jpg', 35, NULL),
+(64, '../imagenes/eventos/evento35/', 35, NULL),
+(65, '../imagenes/eventos/evento35/9.jpg', 35, NULL),
+(66, '../imagenes/eventos/evento35/10.jpg', 35, NULL),
+(67, '../imagenes/eventos/evento35/8.jpg', 35, NULL),
+(68, '../imagenes/eventos/evento35/9.jpg', 35, NULL),
+(69, '../imagenes/eventos/evento35/10.jpg', 35, NULL),
+(70, '../imagenes/eventos/evento37/1.jpg', 37, NULL),
+(71, '../imagenes/eventos/evento37/2.jpg', 37, NULL),
+(72, '../imagenes/eventos/evento37/8.jpg', 37, NULL),
+(76, '../imagenes/eventos/evento37/11.jpg', 37, NULL),
+(77, '../imagenes/eventos/evento37/12.jpg', 37, NULL),
+(87, '../imagenes/eventos/evento37/7.jpg', 37, NULL),
+(88, '../imagenes/eventos/evento37/8.jpg', 37, NULL),
+(89, '../imagenes/eventos/evento37/1.jpg', 37, NULL),
+(90, '../imagenes/eventos/evento37/3.jpg', 37, NULL),
+(95, '../imagenes/eventos/evento37/', 37, NULL),
+(96, '../imagenes/eventos/evento37/1.jpg', 37, NULL);
 
 -- --------------------------------------------------------
 
@@ -243,7 +272,8 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`nick`, `apellido1`, `email`, `tipo`, `pass`, `avatar`) VALUES
-('Antonio', 'Garcia', 'prueba3@gmail.com', 0, '$2y$10$6rkaVC8fdfcdvhhfloE2m.ZA4n0Xny18OZy54DRiFeCZzszw7Dm6a', 'imagenes/avatares/8.jpg'),
+('Admin', 'Super', 'super@hotmail.es', 3, '$2y$10$l5qTB6sG10PfLTK2LSEBGu9T5w7h7UdXK7r2/06acuVt6DQ/ZsG46', 'imagenes/avatares/1.jpg'),
+('Antonio', 'Garcia', 'prueba3@gmail.com', 2, '$2y$10$6rkaVC8fdfcdvhhfloE2m.ZA4n0Xny18OZy54DRiFeCZzszw7Dm6a', 'imagenes/avatares/8.jpg'),
 ('David', 'Sanchez', 'realmadrid23@hotmail.es', 0, '$2y$10$Vcz4DK8I47s7e3l1xoQy6.qAXXtkZPArPkG/K7YOyvhHp8ZftT5Zy', 'imagenes/avatares/15.jpg'),
 ('Jose', 'Santos', 'josess09@hotmail.es', 0, '$2y$10$l5qTB6sG10PfLTK2LSEBGu9T5w7h7UdXK7r2/06acuVt6DQ/ZsG46', 'imagenes/avatares/1.jpg'),
 ('Juan', 'Garcia', 'garci@gmail.com', 0, '$2y$10$l5qTB6sG10PfLTK2LSEBGu9T5w7h7UdXK7r2/06acuVt6DQ/ZsG46', ''),
@@ -274,8 +304,8 @@ ALTER TABLE `comentarios2`
 -- Indices de la tabla `etiquetas`
 --
 ALTER TABLE `etiquetas`
-  ADD PRIMARY KEY (`modelo`),
-  ADD KEY `idEvento` (`idEvento`);
+  ADD PRIMARY KEY (`id_etiqueta`),
+  ADD KEY `fk_evento_id` (`id_evento`);
 
 --
 -- Indices de la tabla `eventos`
@@ -319,16 +349,22 @@ ALTER TABLE `comentarios2`
   MODIFY `id_comentario` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
 
 --
+-- AUTO_INCREMENT de la tabla `etiquetas`
+--
+ALTER TABLE `etiquetas`
+  MODIFY `id_etiqueta` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
 -- AUTO_INCREMENT de la tabla `eventos`
 --
 ALTER TABLE `eventos`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT de la tabla `imagenes`
 --
 ALTER TABLE `imagenes`
-  MODIFY `id_imagen` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
+  MODIFY `id_imagen` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=97;
 
 --
 -- Restricciones para tablas volcadas
@@ -351,7 +387,7 @@ ALTER TABLE `comentarios2`
 -- Filtros para la tabla `etiquetas`
 --
 ALTER TABLE `etiquetas`
-  ADD CONSTRAINT `etiquetas_ibfk_1` FOREIGN KEY (`idEvento`) REFERENCES `eventos` (`id`);
+  ADD CONSTRAINT `fk_evento_id` FOREIGN KEY (`id_evento`) REFERENCES `eventos` (`id`);
 
 --
 -- Filtros para la tabla `imagenes`

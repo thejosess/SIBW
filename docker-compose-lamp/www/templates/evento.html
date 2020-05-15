@@ -4,6 +4,9 @@
 
 {% block javascript %}<script type="text/javascript" src="/Javascript/JavaScript.js"></script>{% endblock %}
 
+{% block gestionUsuarios %}
+{%endblock%}
+
 
                 {% block foro %} <a href="#">Foro</a> {% endblock %}
                 
@@ -28,6 +31,11 @@
             <a href="/gestionEventos.php?idEvento={{ evento['id_evento'] }}&borrar=true"> <img src="/imagenes/papelera.png" class="papelera"></a>
             <a href="/gestionEventos.php?&añadir=true"> <img src="/imagenes/add_evento.png" class="papelera"></a>
             <a href="/gestionEventos.php?idEvento={{ evento['id_evento'] }}&modificar=true"> <img src="/imagenes/edit_evento.png" class="papelera"></a>
+
+            <a href="/gestionEventos.php?todos=true"><button id="boton">
+                Todos los eventos
+            </button>
+            </a>
             {% endif %}
 
             <h1>

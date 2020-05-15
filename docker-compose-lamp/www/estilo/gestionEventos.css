@@ -167,6 +167,7 @@ input[type=submit]:hover{
     
 }
 
+
 .card {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     margin: auto;
@@ -181,3 +182,32 @@ input[type=submit]:hover{
     font-size: 18px;
   }
   
+.papelera, .pencil{
+    float:right;
+    width: 30px;
+    height: 30px;
+}
+
+.papelera:hover, .pencil:hover{
+    opacity:0.5;
+}
+
+#hueco{
+    background-color:rgb(187, 187, 187);
+    -ms-flex: 30%;
+    flex: 30%;
+    padding: 15px;
+}
+
+#comment1{
+    margin-top: 10%;
+    margin-bottom: 4%;
+}
+
+#comment1, #comment2, #comment3{
+    border-style: solid;
+    border-color: white;
+    -ms-flex: 30%;
+    flex: 30%;
+    padding: 15px;
+}

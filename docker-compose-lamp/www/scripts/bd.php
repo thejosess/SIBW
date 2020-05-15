@@ -408,6 +408,52 @@
   
   }
 
+  function getAllEventos(){
+    getConexion();
+    global $mysqli;
 
+    //obtengo los comentarios
+    $res = $mysqli->query("SELECT * FROM eventos");
+    if($res->num_rows > 0){
+
+      $contador = 0;
+
+      while($row = $res->fetch_assoc()){
+        $eventos [$contador] = [$row['id'], $row['modelo'], $row['analisis'], $row['conclusiones']];
+        $contador = $contador + 1;
+      }
+    }
+    return $eventos;
+  }
+
+
+  function getAllUsuarios(){
+    getConexion();
+    global $mysqli;
+
+    //obtengo los comentarios
+    $res = $mysqli->query("SELECT * FROM usuarios");
+    if($res->num_rows > 0){
+
+      $contador = 0;
+
+      while($row = $res->fetch_assoc()){
+        $usuarios [$contador] = [$row['tipo'],$row['nick']];
+        $contador = $contador + 1;
+      }
+    }
+    return $usuarios;
+  }
+  
+  function    modificarTipoUsuario($nick,$nuevoTipo){
+    getConexion();
+    global $mysqli;
+
+    $nick = mysqli_real_escape_string($mysqli, $nick);
+    $nuevoTipo = (int)$nuevoTipo;
+
+    $res = $mysqli->query("UPDATE usuarios SET tipo='$nuevoTipo' WHERE nick='" . $nick . "'" );
+
+  }
 
 ?>

@@ -76,6 +76,15 @@
         {% endblock %}
     
         <section>
+            {% block gestionUsuarios %}
+                {% if usuario['tipo'] >= 3 %}
+                <a href="/gestionUsuarios.php"><button id="boton">
+                    Gestion usuarios
+                </button>
+                </a>
+                {% endif %}
+            {% endblock %}
+
             {% block cuerpo %}
             <table id="tabla_contenidos">
             <caption><span class="titulo_tabla"><h2></h2>Top 9 Cámaras</span></caption>

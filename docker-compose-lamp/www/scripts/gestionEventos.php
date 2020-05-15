@@ -19,6 +19,10 @@ if($_GET['borrar'] == true){
     $borrar = true;
 }
 
+if($_GET['todos'] == true){
+    $todos = true;
+}
+
 if(isset($_GET['idEvento'])){
     $idEvento = $_GET['idEvento'];
 }
@@ -145,6 +149,22 @@ if($borrar == true){
 
 
 }
+
+if($todos == true){
+    if(isset($_SESSION['email']) && $_SESSION['logueado']){
+        $usuario = getUsuario($_SESSION['email']);
+    
+        if($usuario['tipo'] >= 2){
+            $eventos = getAllEventos();
+        }
+    
+        echo $twig->render('gestionEventos.html',['usuario' => $usuario, 'eventos' => $eventos, 'todos' => $todos]);
+        exit; 
+    }
+    
+}
+
+
 $evento = getEvento($idEvento);
 
 

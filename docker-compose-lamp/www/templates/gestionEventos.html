@@ -1,6 +1,9 @@
 {%extends "index.html"%}
 
-{% block estilo %}<link rel="stylesheet" type="text/css" href="estilo/perfil.css" />{% endblock %}
+{% block estilo %}<link rel="stylesheet" type="text/css" href="estilo/gestionEventos.css" />{% endblock %}
+
+{% block gestionUsuarios %}
+{%endblock%}
 
 
 {% block titulo %} Gestión eventos {%endblock%}
@@ -81,6 +84,29 @@
         </div>
 
     </div>
+
+{% elseif todos  %}
+<div id = "hueco"><br>
+    {% for evento in eventos%}
+    <div id = "comment1"> 
+        <p>
+            <strong><u> Evento id  {{ evento[0] }}  </u></strong>
+        </p>
+        <p>  
+            Modelo: {{ evento[1] }} 
+        </p> 
+        <p>
+            Analsis: {{ evento[2] }}
+            <p>Conclusiones:{{ evento[3] }} </p>
+
+            <a href="/gestionEventos.php?idEvento={{ evento[0] }}&borrar=true"> <img src="/imagenes/papelera.png" class="papelera"></a>
+            <a href="/gestionEventos.php?idEvento={{ evento[0] }}&modificar=true"> <img src="/imagenes/pencil.png" class="pencil"></a>
+
+        </p>
+    </div>
+    {% endfor %}
+</div>    
+
 {% endif %}
 
 {% endblock %}
