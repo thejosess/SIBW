@@ -99,9 +99,19 @@
       }
     }
 
+    //obtengo etiquetas
+    $res = $mysqli->query("SELECT * FROM etiquetas WHERE id_evento=" . $idEvento);
+    if($res->num_rows > 0){
+
+      $row = $res->fetch_assoc();
+      $id_etiqueta = $row['id_etiqueta'];
+      $etiqueta = $row['etiqueta'];
+      $etiquetas = array('id_etiqueta' => $idEtiqueta, 'etiqueta' => $etiqueta);
+
+    }
 
 
-    $evento = array('id_evento' => $idEvento ,'modelo' => $modelo,'comentarios' =>$comentarios, 'analisis' => $analisis,'conclusiones' => $conclusiones, 'primeraFoto' => $imagen1['ruta_imagen'], 'piePrimeraFoto' => $imagen1['pie_foto'],'segundaFoto' => $imagen2['ruta_imagen'],'pieSegundaFoto' => $imagen2['pie_foto'], 'galeria' => $galeria);
+    $evento = array('id_evento' => $idEvento ,'modelo' => $modelo,'comentarios' =>$comentarios, 'analisis' => $analisis,'conclusiones' => $conclusiones, 'primeraFoto' => $imagen1['ruta_imagen'], 'piePrimeraFoto' => $imagen1['pie_foto'],'segundaFoto' => $imagen2['ruta_imagen'],'pieSegundaFoto' => $imagen2['pie_foto'], 'galeria' => $galeria, 'etiquetas' => $etiquetas);
 
     return $evento;
   }
