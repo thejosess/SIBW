@@ -59,6 +59,10 @@
   {
     include("scripts/gestionUsuarios.php");
   }
+  else if(startsWith($uri, "/ayax.php"))
+  {
+    include("scripts/ayax.php");
+  }
   else
   {
     if($_SESSION['logueado'] == true && isset($_SESSION['email'])){

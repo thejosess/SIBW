@@ -12,7 +12,73 @@ function Cerrar(){
     document.getElementById("hueco").style.display = 'none'
     document.getElementById("boton2").style.display = 'none'
     document.getElementById("boton").style.visibility = 'visible'
+}
 
+function iconoBusqueda(){
+    document.getElementById('enlaceLupa').style.display = 'none';
+    document.getElementById('campoBusqueda').style.display = 'block';
+    document.getElementById('busquedaResult').style.display = 'block';
+}
+
+function peticionBusqueda(datos){
+    console.log(datos); 
+    if(datos.length != 0)
+    {
+        $.ajax({
+            data: {datos},
+            url: '/ayax.php',
+            type: 'get',
+            beforeSend: function () {
+              /* $("#mensaje").show(); */
+            },
+            success: function(respuesta) {
+              procesaRespuestaAjax(respuesta);
+              /* $("#mensaje").hide(); */
+            }
+         });
+    }
+    else if(datos.length == 0){
+        document.getElementById("busquedaResult").innerHTML="";
+    }
+
+}
+
+function procesaRespuestaAjax(respuesta){
+    res = "";
+    
+/*     for (i = 0 ; i < respuesta.length ; i++) {
+        res += "<tr><td>" + respuesta[i].obj + "</td><td>" + respuesta[i].cant + "</td></tr>\n";
+    } */
+    
+    /* $("#tabla > tbody").html(res); */
+
+    var busqueda = document.getElementById("busquedaResult");
+    var t;
+
+    busqueda.innerHTML="";
+    //reinicio para que no se queden ahi volando los resultados anteriores y dejo los actuales
+
+    if(respuesta.length != 0)
+    {
+        for (i = 0; i < respuesta.length; i++) {
+            var p = document.createElement("P");
+            var t = document.createTextNode(respuesta[i]['modelo']);
+            var a = document.createElement('a');
+
+            a.appendChild(t);
+            a.title = t;
+            a.href = "/evento/"+respuesta[i]['id'];
+
+
+            p.appendChild(a);
+            busqueda.appendChild(p);
+        }         
+    }
+    else{
+        document.getElementById("busquedaResult").innerHTML="no se ha encontrado nada"
+    }
+    console.log(respuesta); 
+    console.log("respuesta recibida")
 
 }
 

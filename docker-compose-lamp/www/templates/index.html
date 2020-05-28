@@ -7,7 +7,10 @@
     {% block estilo %}<link rel="stylesheet" type="text/css" href="estilo/index.css" />{% endblock %}
     <link rel="shortcut icon" type="image/x-icon" href="/imagenes/instagram-logo.svg">
     <title>Practica 1</title>
-    {% block javascript %} {% endblock %}
+    {% block javascript %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script type="text/javascript" src="/Javascript/JavaScript.js"></script>
+    {% endblock %}
 </head>
 
 <body>
@@ -23,6 +26,16 @@
                 <a href="/index.php">Home</a>
                 {% block foro %} <a href="/evento.php">Foro</a> {% endblock %}
                 <a href="#">Contacto</a>
+
+                <div class="busqueda">
+                    <form>
+                        <input type="text" id="campoBusqueda" size="30" onkeyup="peticionBusqueda(this.value)">
+                    </form>
+                </div>
+
+                <div id="enlaceLupa">
+                    <a href="javascript:iconoBusqueda();"><img src="imagenes/search.png" id="lupa" /></a>
+                </div>
 
                 {% if logueado == false %}
                     <div class="usuario">
@@ -86,6 +99,10 @@
             {% endblock %}
 
             {% block cuerpo %}
+
+            <div id="busquedaResult"></div>
+
+
             <table id="tabla_contenidos">
             <caption><span class="titulo_tabla"><h2></h2>Top 9 Cámaras</span></caption>
                 <tr>

@@ -44,6 +44,31 @@ body{
     float:right;
 }
 
+.nav .busqueda input{
+    font-size: 24px;
+    padding: 14px 16px;
+    color:black;
+    text-align: center;
+    background-color: gainsboro;
+/*     display: block;
+ */    float:right;
+    text-decoration: none; /* para que no salga el subrayado de enlace */
+}
+
+#campoBusqueda{
+    display:none;
+}
+
+#lupa{
+    width: 2.5%;
+    height: 2.5%;
+
+}
+
+#mensaje{
+    display: none;
+}
+
 #logo{
     width: 5%;
     position: absolute;

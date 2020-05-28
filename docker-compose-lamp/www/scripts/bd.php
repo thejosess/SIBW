@@ -455,7 +455,7 @@
     return $usuarios;
   }
   
-  function    modificarTipoUsuario($nick,$nuevoTipo){
+  function modificarTipoUsuario($nick,$nuevoTipo){
     getConexion();
     global $mysqli;
 
@@ -465,5 +465,27 @@
     $res = $mysqli->query("UPDATE usuarios SET tipo='$nuevoTipo' WHERE nick='" . $nick . "'" );
 
   }
+
+  function busquedaEvento($datos){
+    getConexion();
+    global $mysqli;
+
+    $datos = mysqli_real_escape_string($mysqli, $datos);
+
+    $res = $mysqli->query("SELECT modelo,id FROM eventos WHERE modelo LIKE '%$datos%'" );
+
+    $eventos = array();
+
+    if($res->num_rows > 0){
+
+      while($row = $res->fetch_assoc()){
+        array_push($eventos, ['id' => $row['id'], 'modelo'=>$row['modelo']]);
+      }
+    }
+
+    return $eventos;
+  }
+
+
 
 ?>
