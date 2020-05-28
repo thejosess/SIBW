@@ -63,6 +63,18 @@ body{
     display:none;
 }
 
+#busquedaResult a{
+    text-decoration:none;
+    color:black;
+}
+
+#busquedaResult a:hover{
+    color:white;
+    background-color: lightgrey;
+}
+
+
+
 .nav a:hover{
     color:black;
     background-color: lightgrey;
@@ -129,7 +141,11 @@ footer{
 .enlaces a{
     text-decoration:underline;
     color:black;
-    
+}
+
+.enlaces a{
+    text-decoration:underline;
+    color:black;
 }
 
 section #tabla_contenidos tr td a{
