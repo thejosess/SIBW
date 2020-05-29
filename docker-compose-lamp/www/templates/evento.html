@@ -37,7 +37,7 @@
             {% endif %}
 
             <h1>
-                Analisis de rendimiento de la camara reflex {{ evento['modelo']}}
+                Analisis de rendimiento de la camara reflex {{ evento['modelo']|raw}}
             </h1>
             <p>
                 <h2> Xatakafotos</h2>
@@ -94,14 +94,12 @@
             {% endif %}
             {%endblock %}
 
-            <div>
                 <div class="contenedorImagen">
                     <img src= {{ evento['primeraFoto'] }} class="img" >
                     <span class="pie">{{ evento['piePrimeraFoto']}}<div class="caption"><a href="https://i.blogs.es/dd0ebd/sony-a6100-review-008/1366_2000.jpg">foto 1</a></div></span>
                 </div>
                     
-                {{ evento['analisis']}}
-            </div>
+                {{ evento['analisis']|raw }}
 
             <br><br><br><br>
             <div class="conclusiones">
@@ -114,7 +112,7 @@
                         <span class="pie"> {{ evento['pieSegundaFoto']}}<div class="caption"><a href="https://i.blogs.es/cf6003/dsc00459/1366_2000.jpg">foto 2</a></div> </span>
                     </div>                    
                 </div>
-                {{ evento['conclusiones']}}
+                {{ evento['conclusiones']|raw}}
                 <p>
                     Mas información:
                     <br>

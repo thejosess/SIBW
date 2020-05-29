@@ -10,6 +10,17 @@
 
   $evento = getEvento($idEvento);
 
+  if(isset($_GET['busqueda']))
+  {
+    $coincidencias = $_GET['busqueda'];
+
+    $res = "<strong>".$coincidencias."</strong>";
+    $evento['analisis'] = str_ireplace($coincidencias,$res,$evento['analisis']);
+    $evento['conclusiones'] = str_ireplace($coincidencias,$res,$evento['conclusiones']);
+    $evento['modelo'] = str_ireplace($coincidencias,$res,$evento['modelo']);
+ 
+  }
+
   /* son los controladores */
 
 

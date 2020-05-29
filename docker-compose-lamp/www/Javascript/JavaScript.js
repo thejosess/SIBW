@@ -20,19 +20,19 @@ function iconoBusqueda(){
     document.getElementById('busquedaResult').style.display = 'block';
 }
 
-function peticionBusqueda(datos){
+function peticionBusqueda(datos,gestor){
     console.log(datos); 
     if(datos.length != 0)
     {
         $.ajax({
             data: {datos},
-            url: '/ayax.php',
+            url: "/ayax.php?gestor="+gestor,
             type: 'get',
             beforeSend: function () {
               /* $("#mensaje").show(); */
             },
             success: function(respuesta) {
-              procesaRespuestaAjax(respuesta);
+              procesaRespuestaAjax(respuesta,datos);
               /* $("#mensaje").hide(); */
             }
          });
@@ -43,7 +43,7 @@ function peticionBusqueda(datos){
 
 }
 
-function procesaRespuestaAjax(respuesta){
+function procesaRespuestaAjax(respuesta,datos){
     res = "";
     
 /*     for (i = 0 ; i < respuesta.length ; i++) {
@@ -61,13 +61,19 @@ function procesaRespuestaAjax(respuesta){
     if(respuesta.length != 0)
     {
         for (i = 0; i < respuesta.length; i++) {
+
+            var res = respuesta[i]['modelo'];
+
             var p = document.createElement("P");
-            var t = document.createTextNode(respuesta[i]['modelo']);
+            var t = document.createTextNode(res);
+
+                
+
             var a = document.createElement('a');
 
             a.appendChild(t);
-            a.title = t;
-            a.href = "/evento/"+respuesta[i]['id'];
+            a.title = respuesta[i]['modelo'];
+            a.href = "/evento/"+respuesta[i]['id']+"?busqueda="+datos;
 
 
             p.appendChild(a);

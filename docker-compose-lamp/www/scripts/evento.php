@@ -39,6 +39,6 @@
     }
   }
 
-  echo $twig->render('evento.html', ['evento' => $evento, 'palabras' => $palabras, 'logueado' => $logueado, 'usuario' => $usuario]);
+  echo $twig->render('evento.html', ['evento' => $evento, 'palabras' => $palabras, 'logueado' => $logueado, 'usuario' => $usuario,  'coincidencias' => $coincidencias]);
 
 ?>

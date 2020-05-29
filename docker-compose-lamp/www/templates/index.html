@@ -29,7 +29,11 @@
 
                 <div class="busqueda">
                     <form>
-                        <input type="text" id="campoBusqueda" size="30" onkeyup="peticionBusqueda(this.value)">
+                        {% if usuario['tipo'] >= 2 %}
+                            <input type="text" id="campoBusqueda" size="30" onkeyup="peticionBusqueda(this.value,true)">
+                        {% else %}
+                            <input type="text" id="campoBusqueda" size="30" onkeyup="peticionBusqueda(this.value,false)">
+                        {% endif %}
                     </form>
                 </div>
 
@@ -99,9 +103,13 @@
             {% endblock %}
 
             {% block cuerpo %}
+            
+            <div id="busquedaResult">
+                {{ var | raw}}
 
-            <div id="busquedaResult"></div>
-
+                <div id='coincidencias'></div>
+    
+            </div>
 
             <table id="tabla_contenidos">
             <caption><span class="titulo_tabla"><h2></h2>Top 9 Cámaras</span></caption>

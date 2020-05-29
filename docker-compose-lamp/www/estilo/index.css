@@ -68,12 +68,15 @@ body{
     color:black;
 }
 
+
 #busquedaResult a:hover{
     color:white;
     background-color: lightgrey;
 }
 
-
+.result{
+    font-weight: bold;
+}
 
 .nav a:hover{
     color:black;

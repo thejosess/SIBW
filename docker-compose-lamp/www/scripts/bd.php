@@ -28,6 +28,110 @@
     $idEvento = (int)$idEvento;
     //asi me aseguro de que no me puedan meter instrucciones sql
 
+    $publicado = false;
+
+    //obtengo el evento
+    $res = $mysqli->query("SELECT * FROM eventos WHERE publicado=1 AND id='" . $idEvento . "'");
+    if($res->num_rows > 0){
+      $publicado = true;
+
+      $row = $res->fetch_assoc();
+      $modelo = $row['modelo'];
+      $analisis = $row['analisis'];
+      $conclusiones = $row['conclusiones'];
+
+    }
+    else{
+
+      $res = $mysqli->query("SELECT * FROM eventos WHERE id=1");
+      $row = $res->fetch_assoc();
+      $modelo = $row['modelo'];
+      $analisis = $row['analisis'];
+      $conclusiones = $row['conclusiones'];
+
+    }
+
+    //obtengo las imagenes
+    $imagenes = $mysqli->query("SELECT * FROM imagenes WHERE id_evento=" . $idEvento);
+    if($imagenes->num_rows > 0 && $publicado){
+
+      $row = $imagenes->fetch_assoc();
+      $imagen1['ruta_imagen'] = $row['ruta_imagen'];
+      $imagen1['pie_foto'] = $row['pie_foto'];
+      $row = $imagenes->fetch_assoc();
+      $imagen2['ruta_imagen'] = $row['ruta_imagen'];
+      $imagen2['pie_foto'] = $row['pie_foto'];
+
+      while($row = $imagenes->fetch_assoc()){
+        $galeria [$contador] = $row['ruta_imagen'];
+        $contador = $contador + 1;
+        $var = $row['ruta_imagen'];
+      }
+    }
+    else{
+      $imagenes = $mysqli->query("SELECT * FROM imagenes WHERE id_evento=1");
+      $row = $imagenes->fetch_assoc();
+      $imagen1['ruta_imagen'] = $row['ruta_imagen'];
+      $imagen1['pie_foto'] = $row['pie_foto'];
+      $row = $imagenes->fetch_assoc();
+      $imagen2['ruta_imagen'] = $row['ruta_imagen'];
+      $imagen2['pie_foto'] = $row['pie_foto'];
+
+      while($row = $imagenes->fetch_assoc()){
+        $galeria [$contador] = $row['ruta_imagen'];
+        $contador = $contador + 1;
+      }
+    }
+
+
+    //obtengo los comentarios
+    $res = $mysqli->query("SELECT * FROM comentarios WHERE id_evento=" .$idEvento);
+    if($res->num_rows > 0 && $publicado){
+
+
+      while($row = $res->fetch_assoc()){
+        $comentarios [$contador] = [$row['nombre'], $row['comentario'], $row['fecha'], $row['hora'],$row['id_comentario']];
+        $contador = $contador + 1;
+      }
+    }
+    else{
+      $res = $mysqli->query("SELECT * FROM comentarios WHERE id_evento= 1");
+
+      while($row = $res->fetch_assoc()){
+        $comentarios [$contador] = [$row['nombre'], $row['comentario'], $row['fecha'], $row['hora'],$row['id_comentario']];
+        $contador = $contador + 1;
+      }
+    }
+
+    //obtengo etiquetas
+    $res = $mysqli->query("SELECT * FROM etiquetas WHERE id_evento=" . $idEvento);
+    if($res->num_rows > 0 && $publicado){
+
+      $row = $res->fetch_assoc();
+      $id_etiqueta = $row['id_etiqueta'];
+      $etiqueta = $row['etiqueta'];
+      $etiquetas = array('id_etiqueta' => $idEtiqueta, 'etiqueta' => $etiqueta);
+
+    }
+
+
+    $evento = array('id_evento' => $idEvento ,'modelo' => $modelo,'comentarios' =>$comentarios, 'analisis' => $analisis,'conclusiones' => $conclusiones, 'primeraFoto' => $imagen1['ruta_imagen'], 'piePrimeraFoto' => $imagen1['pie_foto'],'segundaFoto' => $imagen2['ruta_imagen'],'pieSegundaFoto' => $imagen2['pie_foto'], 'galeria' => $galeria, 'etiquetas' => $etiquetas);
+
+    return $evento;
+  }
+
+  function getEventoSinPublicar($idEvento) {
+
+    getConexion();
+    global $mysqli;
+    //asi consigo que no se abran multiples veces la conexión,la primera que llama es la que lo abre
+    //el resto acceden a la variable global para hacer las consultas
+
+    $contador = 0;
+
+    $idEvento = (int)$idEvento;
+    //asi me aseguro de que no me puedan meter instrucciones sql
+
     //obtengo el evento
     $res = $mysqli->query("SELECT * FROM eventos WHERE id=" . $idEvento);
     if($res->num_rows > 0){
@@ -344,10 +448,11 @@
     $modelo = mysqli_real_escape_string($mysqli, $modelo);
     $conclusiones = mysqli_real_escape_string($mysqli, $conclusiones);
     $analisis = mysqli_real_escape_string($mysqli, $analisis);
+    $publicado = 0;
 
 
 
-    $res = $mysqli->query("INSERT INTO eventos(modelo,analisis,conclusiones) VALUES ('$modelo','$analisis','$conclusiones')"); 
+    $res = $mysqli->query("INSERT INTO eventos(modelo,analisis,conclusiones,publicado) VALUES ('$modelo','$analisis','$conclusiones','$publicado')"); 
     $idEvento = $mysqli->query("SELECT last_insert_id()");
     $idEvento = $idEvento->fetch_array();
     $idEvento = $idEvento['last_insert_id()'];
@@ -422,8 +527,8 @@
     getConexion();
     global $mysqli;
 
-    //obtengo los comentarios
-    $res = $mysqli->query("SELECT * FROM eventos");
+    //obtengo los comentarios que esten publicados ya
+    $res = $mysqli->query("SELECT * FROM eventos WHERE publicado=1");
     if($res->num_rows > 0){
 
       $contador = 0;
@@ -472,7 +577,7 @@
 
     $datos = mysqli_real_escape_string($mysqli, $datos);
 
-    $res = $mysqli->query("SELECT modelo,id FROM eventos WHERE modelo LIKE '%$datos%'" );
+    $res = $mysqli->query("SELECT modelo,id FROM eventos WHERE concat(modelo,analisis,conclusiones) LIKE '%$datos%' and publicado=1" );
 
     $eventos = array();
 
@@ -484,6 +589,35 @@
     }
 
     return $eventos;
+  }
+
+  function busquedaEventoGestor($datos){
+    getConexion();
+    global $mysqli;
+
+    $datos = mysqli_real_escape_string($mysqli, $datos);
+
+    $res = $mysqli->query("SELECT modelo,id FROM eventos WHERE concat(modelo,analisis,conclusiones) LIKE '%$datos%'" );
+
+    $eventos = array();
+
+    if($res->num_rows > 0){
+
+      while($row = $res->fetch_assoc()){
+        array_push($eventos, ['id' => $row['id'], 'modelo'=>$row['modelo']]);
+      }
+    }
+
+    return $eventos;
+  }
+
+  function publicarEvento($idEvento){
+    getConexion();
+    global $mysqli;
+
+    $idEvento = (int)$idEvento;
+
+    $res = $mysqli->query("UPDATE eventos SET publicado=1");
   }
 
 

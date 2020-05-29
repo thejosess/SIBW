@@ -78,7 +78,7 @@ if($añadir == true){
         }
         $añadir = false; 
         $modificar = true;
-        $evento = getEvento($idEvento);
+        $evento = getEventoSinPublicar($idEvento);
 
         echo $twig->render('gestionEventos.html', ['evento' => $evento,'añadir' => $añadir, 'modificar' => $modificar]);
         exit;
@@ -134,6 +134,12 @@ if($modificar == true){
                 añadirEtiqueta($etiqueta,$idEvento);
             }
 
+            if(!empty($_POST['pubicado'])){
+                $publicado = $_POST['pubicado'];
+                if($publicado == 1)
+                    publicarEvento($idEvento);
+            }
+
         
     }
 }
@@ -165,7 +171,7 @@ if($todos == true){
 }
 
 
-$evento = getEvento($idEvento);
+$evento = getEventoSinPublicar($idEvento);
 
 
 

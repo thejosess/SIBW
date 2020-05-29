@@ -201,13 +201,13 @@ input[type=submit]:hover{
 
 #comment1{
     margin-top: 10%;
-    margin-bottom: 4%;
+    margin-bottom: 4%; 
 }
 
 #comment1, #comment2, #comment3{
-    border-style: solid;
+     border-style: solid;
     border-color: white;
     -ms-flex: 30%;
     flex: 30%;
-    padding: 15px;
+    padding: 100px; 
 }
